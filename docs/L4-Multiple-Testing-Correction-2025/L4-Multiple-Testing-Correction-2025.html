@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="L4-Multiple-Testing-Correction-2025_files/libs/clipboard/clipboard.min.js"></script>
+<script src="L4-Multiple-Testing-Correction-2025_files/libs/quarto-html/tabby.min.js"></script>
+<script src="L4-Multiple-Testing-Correction-2025_files/libs/quarto-html/popper.min.js"></script>
+<script src="L4-Multiple-Testing-Correction-2025_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="L4-Multiple-Testing-Correction-2025_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="L4-Multiple-Testing-Correction-2025_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="L4-Multiple-Testing-Correction-2025_files/libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.31">
 
   <meta name="author" content="Hae Kyung Im, PhD">
@@ -15,8 +15,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -96,14 +96,11 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
-  <link rel="stylesheet" href="../custom.css">
-  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link href="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -404,13 +401,13 @@ Hae Kyung Im, PhD
 <p><span class="math display">\[Y_{\text{null}} = X \cdot 0 + \epsilon' \quad \text{(no true effect)}\]</span></p>
 <p><span class="math display">\[Y_{\text{alt}} = X \cdot \beta + \epsilon \quad \text{(true genetic effect)}\]</span></p>
 <div class="fragment">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>nsamp  <span class="ot">=</span> <span class="dv">100</span>               <span class="co"># sample size</span></span>
-<span id="cb1-2"><a></a>beta   <span class="ot">=</span> <span class="dv">2</span>                 <span class="co"># effect size</span></span>
-<span id="cb1-3"><a></a>h2     <span class="ot">=</span> <span class="fl">0.1</span>               <span class="co"># heritability (proportion of variance explained by X)</span></span>
-<span id="cb1-4"><a></a>sig2X  <span class="ot">=</span> h2</span>
-<span id="cb1-5"><a></a>sig2epsi <span class="ot">=</span> (<span class="dv">1</span> <span class="sc">-</span> sig2X) <span class="sc">*</span> beta<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb1-6"><a></a>sigX   <span class="ot">=</span> <span class="fu">sqrt</span>(sig2X)</span>
-<span id="cb1-7"><a></a>sigepsi <span class="ot">=</span> <span class="fu">sqrt</span>(sig2epsi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>nsamp  <span class="ot">=</span> <span class="dv">100</span>               <span class="co"># sample size</span></span>
+<span id="cb1-2"><a href=""></a>beta   <span class="ot">=</span> <span class="dv">2</span>                 <span class="co"># effect size</span></span>
+<span id="cb1-3"><a href=""></a>h2     <span class="ot">=</span> <span class="fl">0.1</span>               <span class="co"># heritability (proportion of variance explained by X)</span></span>
+<span id="cb1-4"><a href=""></a>sig2X  <span class="ot">=</span> h2</span>
+<span id="cb1-5"><a href=""></a>sig2epsi <span class="ot">=</span> (<span class="dv">1</span> <span class="sc">-</span> sig2X) <span class="sc">*</span> beta<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb1-6"><a href=""></a>sigX   <span class="ot">=</span> <span class="fu">sqrt</span>(sig2X)</span>
+<span id="cb1-7"><a href=""></a>sigepsi <span class="ot">=</span> <span class="fu">sqrt</span>(sig2epsi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><a href="https://bios25328.hakyimlab.org/post/2022/04/06/multiple-testing-2022/" class="uri">https://bios25328.hakyimlab.org/post/2022/04/06/multiple-testing-2022/</a></p>
 <aside class="notes">
 <p>We define two scenarios: Ynull where X has zero effect on Y, and Yalt where X affects Y with effect size β. We set heritability h² = 0.1 so that 10% of the variance in Y is explained by X.</p>
@@ -467,8 +464,8 @@ Hae Kyung Im, PhD
 <section id="getting-a-p-value-from-linear-regression" class="slide level2">
 <h2>Getting a P-value from Linear Regression</h2>
 <p>Run <code>lm()</code> and extract the p-value from the <code>summary()</code> output:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X)</span>
-<span id="cb2-2"><a></a>pval <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit)<span class="sc">$</span>coefficients[<span class="st">"X"</span>, <span class="st">"Pr(&gt;|t|)"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X)</span>
+<span id="cb2-2"><a href=""></a>pval <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit)<span class="sc">$</span>coefficients[<span class="st">"X"</span>, <span class="st">"Pr(&gt;|t|)"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p><code>summary(fit)$coefficients</code> is a matrix with one row per term:</p>
 <table class="caption-top">
@@ -840,7 +837,6 @@ Hae Kyung Im, PhD
 <li>Risch, N., and Merikangas, K. (1996). The future of genetic studies of complex human diseases. <em>Science</em> 273(5281): 1516–17.</li>
 </ul>
 
-
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -850,20 +846,19 @@ Hae Kyung Im, PhD
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <script src="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script src="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="L4-Multiple-Testing-Correction-2025_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -878,8 +873,7 @@ Hae Kyung Im, PhD
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'chalkboard': {"buttons":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': true,
  
         // Display controls in the bottom right corner
@@ -1050,7 +1044,7 @@ Hae Kyung Im, PhD
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
           RevealNotes,

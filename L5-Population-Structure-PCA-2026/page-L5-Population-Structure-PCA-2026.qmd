@@ -1,0 +1,9 @@
+---
+title: "L5 · Principal Component Analysis and Population Structure"
+date: '2026-04-06'
+author: "Hae Kyung Im, PhD"
+description: "BIOS 25328 · Lecture 5"
+categories: [slides]
+---
+
+[Open slide deck](L5-Population-Structure-PCA-2026.html){.btn .btn-primary .btn-lg}

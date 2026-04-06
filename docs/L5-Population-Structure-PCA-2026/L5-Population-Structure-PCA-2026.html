@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="L5-Population-Structure-PCA-2026_files/libs/clipboard/clipboard.min.js"></script>
+<script src="L5-Population-Structure-PCA-2026_files/libs/quarto-html/tabby.min.js"></script>
+<script src="L5-Population-Structure-PCA-2026_files/libs/quarto-html/popper.min.js"></script>
+<script src="L5-Population-Structure-PCA-2026_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="L5-Population-Structure-PCA-2026_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="L5-Population-Structure-PCA-2026_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="L5-Population-Structure-PCA-2026_files/libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.31">
 
   <meta name="author" content="Hae Kyung Im, PhD">
@@ -15,8 +15,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="L5-Population-Structure-PCA-2026_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="L5-Population-Structure-PCA-2026_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -96,12 +96,11 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
-  <link rel="stylesheet" href="../custom.css">
-  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="L5-Population-Structure-PCA-2026_files/libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link href="L5-Population-Structure-PCA-2026_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="L5-Population-Structure-PCA-2026_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="L5-Population-Structure-PCA-2026_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="L5-Population-Structure-PCA-2026_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -534,8 +533,8 @@ Hae Kyung Im, PhD
 <section id="p-value-histogram-inflation" class="slide level2">
 <h2>P-value Histogram: Inflation</h2>
 
-<img data-src="images/_page_18_Figure_0.jpeg" alt="Histogram of p-values for ~20K SNPs on chr 22 vs growth phenotype. J-shaped — large excess of small p-values indicating inflation." class="r-stretch"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>igrowth.assoc <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"output/igrowth.assoc.linear"</span>, <span class="at">header=</span>T, <span class="at">as.is=</span>T)</span>
-<span id="cb1-2"><a></a><span class="fu">hist</span>(igrowth.assoc<span class="sc">$</span>P)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<img data-src="images/_page_18_Figure_0.jpeg" alt="Histogram of p-values for ~20K SNPs on chr 22 vs growth phenotype. J-shaped — large excess of small p-values indicating inflation." class="r-stretch"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>igrowth.assoc <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"output/igrowth.assoc.linear"</span>, <span class="at">header=</span>T, <span class="at">as.is=</span>T)</span>
+<span id="cb1-2"><a href=""></a><span class="fu">hist</span>(igrowth.assoc<span class="sc">$</span>P)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>J-shaped histogram → inflation (flat = no signal, J-shape = confounding or polygenic)</p>
 <aside class="notes">
 <p>A flat p-value histogram would indicate no inflation. The J-shape means most variants have smaller-than-expected p-values due to population differences, not biology. We have 20,649 variants on chr 22.</p>
@@ -554,8 +553,8 @@ Hae Kyung Im, PhD
 <section id="manhattan-plot-chr-22" class="slide level2">
 <h2>Manhattan Plot: Chr 22</h2>
 
-<img data-src="images/_page_19_Figure_0.jpeg" alt="Manhattan plot of -log10(p) vs chr 22 position. Bonferroni threshold line at ~5.6. A few points near/above threshold but diffuse signal across the chromosome." class="r-stretch"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Bonferroni threshold for 20,649 tests</span></span>
-<span id="cb2-2"><a></a><span class="sc">-</span><span class="fu">log10</span>(<span class="fl">0.05</span> <span class="sc">/</span> <span class="dv">20649</span>)  <span class="co"># [1] 5.616</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<img data-src="images/_page_19_Figure_0.jpeg" alt="Manhattan plot of -log10(p) vs chr 22 position. Bonferroni threshold line at ~5.6. A few points near/above threshold but diffuse signal across the chromosome." class="r-stretch"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Bonferroni threshold for 20,649 tests</span></span>
+<span id="cb2-2"><a href=""></a><span class="sc">-</span><span class="fu">log10</span>(<span class="fl">0.05</span> <span class="sc">/</span> <span class="dv">20649</span>)  <span class="co"># [1] 5.616</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>Manhattan plot shows no clear genome-wide significant hit, but there are many variants narrowly below the Bonferroni threshold — a red flag for population stratification inflating test statistics across the entire chromosome.</p>
 <style type="text/css">
@@ -573,7 +572,7 @@ Hae Kyung Im, PhD
 <section id="qq-plot-widespread-inflation" class="slide level2">
 <h2>QQ Plot: Widespread Inflation</h2>
 
-<img data-src="images/_page_20_Figure_0.jpeg" alt="QQ plot of observed vs expected -log10(p). Points depart from the identity line from very early on — inflation affects the vast majority of variants, not just a few true signals." class="r-stretch"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">qqunif</span>(igrowth.assoc<span class="sc">$</span>P)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<img data-src="images/_page_20_Figure_0.jpeg" alt="QQ plot of observed vs expected -log10(p). Points depart from the identity line from very early on — inflation affects the vast majority of variants, not just a few true signals." class="r-stretch"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">qqunif</span>(igrowth.assoc<span class="sc">$</span>P)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Departure from identity line at <strong>all</strong> quantiles → population structure, not true signal</p>
 <aside class="notes">
 <p>In a well-behaved GWAS, variants follow the identity line (representing true nulls) and depart only for a small set of true associations at the top right. Here the departure begins immediately, indicating that most variants are inflated. This is characteristic of population structure confounding rather than a highly polygenic trait.</p>
@@ -592,9 +591,9 @@ Hae Kyung Im, PhD
 <section id="growth-gwas-adjusted-with-pcs" class="slide level2">
 <h2>Growth GWAS Adjusted with PCs</h2>
 
-<img data-src="images/_page_22_Figure_0.jpeg" alt="Histogram of p-values after adding first 4 PCs as covariates. Distribution is now approximately uniform — inflation corrected." class="r-stretch"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">system</span>(<span class="fu">glue</span>(<span class="st">"plink --bfile hapmapch22 --linear --pheno igrowth.pheno</span></span>
-<span id="cb4-2"><a></a><span class="st">  --pheno-name growth --covar pca.eigenvec --covar-number 1-4</span></span>
-<span id="cb4-3"><a></a><span class="st">  --maf 0.05 --out output/igrowth-adjPC"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<img data-src="images/_page_22_Figure_0.jpeg" alt="Histogram of p-values after adding first 4 PCs as covariates. Distribution is now approximately uniform — inflation corrected." class="r-stretch"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">system</span>(<span class="fu">glue</span>(<span class="st">"plink --bfile hapmapch22 --linear --pheno igrowth.pheno</span></span>
+<span id="cb4-2"><a href=""></a><span class="st">  --pheno-name growth --covar pca.eigenvec --covar-number 1-4</span></span>
+<span id="cb4-3"><a href=""></a><span class="st">  --maf 0.05 --out output/igrowth-adjPC"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>After adjusting for 4 PCs, the p-value distribution is nearly uniform — inflation is corrected. How many PCs to use depends on the application and sample size. UK Biobank analyses typically use 10–20. Always do sensitivity analysis. Do NOT choose the number of PCs that maximizes significance for a cherry-picked variant — that is p-hacking.</p>
 <style type="text/css">
@@ -785,7 +784,6 @@ Hae Kyung Im, PhD
 <li>SVD tweetorial: <a href="https://twitter.com/WomenInStat/status/1285611207530098688">twitter.com/WomenInStat/status/1285611207530098688</a></li>
 </ul>
 
-
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -795,19 +793,19 @@ Hae Kyung Im, PhD
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <script src="L5-Population-Structure-PCA-2026_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="L5-Population-Structure-PCA-2026_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="L5-Population-Structure-PCA-2026_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="L5-Population-Structure-PCA-2026_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="L5-Population-Structure-PCA-2026_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="L5-Population-Structure-PCA-2026_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script src="L5-Population-Structure-PCA-2026_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="L5-Population-Structure-PCA-2026_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="L5-Population-Structure-PCA-2026_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="L5-Population-Structure-PCA-2026_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

@@ -1,0 +1,15 @@
+---
+title: "BIOS 25328"
+listing:
+  contents:
+    - "L*/page-*.qmd"
+  sort: "date asc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: false
+---
+
+Course material for BIOS 25328 — Genomics and Bioinformatics (Hae Kyung Im).
