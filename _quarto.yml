@@ -1,0 +1,12 @@
+project:
+  type: website
+  output-dir: docs
+
+format:
+  revealjs:
+    theme: default
+    slide-number: true
+    chalkboard: true
+    smaller: true
+    scrollable: false
+    css: custom.css
