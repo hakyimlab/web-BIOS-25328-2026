@@ -250,8 +250,7 @@ Hae Kyung Im, PhD
 <section id="principal-components-reveal-demographic-history" class="slide level2">
 <h2>Principal Components Reveal Demographic History</h2>
 
-<img data-src="images/_page_2_Figure_0.jpeg" alt="Novembre et al. 2008 PC plot of ~1500 Europeans. PC1 vs PC2 reproduces the map of Europe, with individuals colored by country of origin." class="r-stretch"><p><em>Novembre et al., Nature 456, 98–101 (2008)</em></p>
-<aside class="notes">
+<img data-src="images/_page_2_Figure_0.jpeg" alt="Novembre et al. 2008 PC plot of ~1500 Europeans. PC1 vs PC2 reproduces the map of Europe, with individuals colored by country of origin." class="r-stretch"><aside class="notes">
 <p>This is probably one of the most referenced figures in genetics talks. The first two principal components of the genotype matrix of ~1,500 European individuals are shown. When each individual is colored by the country of origin, the map of Europe emerges — a remarkable consequence of genetic similarity tied to geographic proximity.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -307,12 +306,12 @@ Hae Kyung Im, PhD
 </section>
 <section id="how-to-correct-for-population-structure" class="slide level2">
 <h2>How to Correct for Population Structure?</h2>
-<ol type="1">
-<li><p><strong>Genomic control</strong> (Devlin &amp; Roeder 1999) Divide all χ² by inflation factor λ — simple, but blunt</p></li>
-<li><p><strong>Infer latent sub-populations</strong> (Pritchard et al.&nbsp;2000) STRUCTURE / ADMIXTURE → run GWAS within each group and meta-analyze</p></li>
-<li><p><strong>PCs as covariates</strong> (Patterson 2006; Price et al.&nbsp;2010) ← <em>most common today</em> Add top PCs to regression model</p></li>
-<li><p><strong>Mixed effects modeling</strong> (EMMAX, Kang et al.&nbsp;2010) Kinship / GRM as random effect — gold standard, computationally intensive</p></li>
+<p><span style="color: #aaa">1. <strong>Genomic control</strong> (Devlin &amp; Roeder 1999) Divide all χ² by inflation factor λ — simple, but blunt</span></p>
+<p><span style="color: #aaa">2. <strong>Infer latent sub-populations</strong> (Pritchard et al.&nbsp;2000) STRUCTURE / ADMIXTURE → run GWAS within each group and meta-analyze</span></p>
+<ol start="3" type="1">
+<li><strong>PCs as covariates</strong> (Patterson 2006; Price et al.&nbsp;2010) ← <em>most common today</em> Add top PCs to regression model</li>
 </ol>
+<p><span style="color: #aaa">4. <strong>Mixed effects modeling</strong> (EMMAX, Kang et al.&nbsp;2010) Kinship / GRM as random effect — gold standard, computationally intensive</span></p>
 <aside class="notes">
 <p>If we know the subpopulations, we can run the GWAS within each and meta-analyze. Even if unknown a priori, PCA can identify discrete clusters. The most common approach is using PCs as covariates. Mixed effects modeling handles subtle structure and relatedness but is computationally expensive.</p>
 <style type="text/css">

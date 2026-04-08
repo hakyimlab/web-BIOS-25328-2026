@@ -37,7 +37,14 @@ for slide in L*/*.qmd; do
     cp -r "$dir/${base}_files" "$dest/"
   fi
 
-  # Copy images referenced by the slides
+
+
+  # Copy images/ subdirectory if present (e.g. L5 stores images there)
+  if [ -d "$dir/images" ]; then
+    cp -r "$dir/images" "$dest/"
+  fi
+
+  # Copy any loose image files in the lecture folder (e.g. L3, L4)
   for ext in jpeg jpg png gif svg; do
     for img in "$dir"/*."$ext"; do
       [ -f "$img" ] && cp "$img" "$dest/"
@@ -50,5 +57,8 @@ for slide in L*/*.qmd; do
 
   echo "  -> copied to $dest/"
 done
+
+# Copy custom.css to docs/ root (slides link to it as ../custom.css)
+[ -f "custom.css" ] && cp "custom.css" "docs/"
 
 echo "=== Done ==="

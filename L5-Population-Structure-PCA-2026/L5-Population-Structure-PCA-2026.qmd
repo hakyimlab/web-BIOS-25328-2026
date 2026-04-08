@@ -7,6 +7,7 @@ date-modified: last-modified
 format:
   revealjs:
     theme: default
+    css: ../custom.css
     slide-number: true
     chalkboard: false
     smaller: true
@@ -49,8 +50,6 @@ The genotype matrix harbors an amazing wealth of information that can be uncover
 
 ![](images/_page_2_Figure_0.jpeg){fig-alt="Novembre et al. 2008 PC plot of ~1500 Europeans. PC1 vs PC2 reproduces the map of Europe, with individuals colored by country of origin."}
 
-*Novembre et al., Nature 456, 98–101 (2008)*
-
 ::: {.notes}
 This is probably one of the most referenced figures in genetics talks. The first two principal components of the genotype matrix of ~1,500 European individuals are shown. When each individual is colored by the country of origin, the map of Europe emerges — a remarkable consequence of genetic similarity tied to geographic proximity.
 :::
@@ -77,17 +76,17 @@ When cases and controls are drawn from populations with different allele frequen
 
 ## How to Correct for Population Structure?
 
-1. **Genomic control** (Devlin & Roeder 1999)
-   Divide all χ² by inflation factor λ — simple, but blunt
+[1. **Genomic control** (Devlin & Roeder 1999)
+   Divide all χ² by inflation factor λ — simple, but blunt]{style="color: #aaa"}
 
-2. **Infer latent sub-populations** (Pritchard et al. 2000)
-   STRUCTURE / ADMIXTURE → run GWAS within each group and meta-analyze
+[2. **Infer latent sub-populations** (Pritchard et al. 2000)
+   STRUCTURE / ADMIXTURE → run GWAS within each group and meta-analyze]{style="color: #aaa"}
 
 3. **PCs as covariates** (Patterson 2006; Price et al. 2010) ← *most common today*
    Add top PCs to regression model
 
-4. **Mixed effects modeling** (EMMAX, Kang et al. 2010)
-   Kinship / GRM as random effect — gold standard, computationally intensive
+[4. **Mixed effects modeling** (EMMAX, Kang et al. 2010)
+   Kinship / GRM as random effect — gold standard, computationally intensive]{style="color: #aaa"}
 
 ::: {.notes}
 If we know the subpopulations, we can run the GWAS within each and meta-analyze. Even if unknown a priori, PCA can identify discrete clusters. The most common approach is using PCs as covariates. Mixed effects modeling handles subtle structure and relatedness but is computationally expensive.

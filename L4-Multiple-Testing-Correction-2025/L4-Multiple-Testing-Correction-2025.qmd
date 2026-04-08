@@ -2,9 +2,11 @@
 title: "Lecture 4: Multiple Testing Correction"
 author: "Hae Kyung Im, PhD"
 date: "April 1, 2026"
+draft: true
 format:
   revealjs:
     theme: default
+    css: ../custom.css
     slide-number: true
     chalkboard: false
     smaller: true
