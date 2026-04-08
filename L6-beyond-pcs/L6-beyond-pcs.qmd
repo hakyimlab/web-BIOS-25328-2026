@@ -2,7 +2,7 @@
 title: "Beyond PCs: Mixed Effects Models & LD Score Regression"
 subtitle: "BIOS 25328 · Lecture 6"
 author: Hae Kyung Im, PhD
-date: '2025-04-14'
+date: '2026-04-08'
 date-modified: last-modified
 format:
   revealjs:
@@ -34,7 +34,7 @@ But two questions remain:
 ## Learning Objectives
 
 1. Understand **genomic control** (λ inflation factor) 
-2. Derive the **mixed effects model** (GRM as random effect) — answers question 1
+2. Build intuition for the **mixed effects model** (GRM as random effect) — answers question 1
 3. Understand the **kinship/GRM** as a random effect covariance structure
 
 . . . 
