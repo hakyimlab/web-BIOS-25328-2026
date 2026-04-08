@@ -1,0 +1,9 @@
+---
+title: "L6 · Beyond PCs: Mixed Effects Models & LD Score Regression"
+date: '2025-04-14'
+author: "Hae Kyung Im, PhD"
+description: "BIOS 25328 · Lecture 6"
+categories: [slides]
+---
+
+[Open slide deck](L6-beyond-pcs.html){.btn .btn-primary .btn-lg}
