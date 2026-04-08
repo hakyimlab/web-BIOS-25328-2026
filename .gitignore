@@ -4,3 +4,6 @@ pdf-sources/
 CLAUDE.html
 
 /.quarto/
+
+# Local preview copies of custom.css inside lecture folders
+L*/custom.css
