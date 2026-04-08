@@ -480,7 +480,10 @@ Hae Kyung Im, PhD
 <section id="mixed-effects-correction-vs.-pc-vs.-genomic-control" class="slide level2">
 <h2>Mixed Effects Correction vs.&nbsp;PC vs.&nbsp;Genomic Control</h2>
 
-<img data-src="images/_page_23_Figure_0.jpeg" class="r-stretch"><aside class="notes">
+<img data-src="images/_page_23_Figure_0.jpeg" class="r-stretch"><div class="source-credit">
+<p>Kang et al.&nbsp;<em>Variance component model to account for sample structure in genome-wide association studies.</em> Nature Genetics, 2010.</p>
+</div>
+<aside class="notes">
 <p>Kang et al.&nbsp;compare uncorrected p-values (inflated), p-values corrected for 100 PCs (eigensoft), and EMMAX-corrected p-values. Panel b compares EMMAX to simple genomic control, showing similar correction. Notice that the authors use genomic control as a measure of goodness of fit.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -512,6 +515,10 @@ Hae Kyung Im, PhD
 </ul>
 <p><img data-src="images/_page_24_Figure_7.jpeg"></p>
 </div></div>
+<div class="fragment">
+<div class="takehome">
+<p>Mixed effects models are computationally expensive</p>
+</div>
 <aside class="notes">
 <p>Mixed effects models are powerful but computationally expensive and can sometimes over-correct (deflation). Still today, the simpler approach of removing close relatives is common — in UK Biobank studies, over 100K individuals have been excluded to avoid relatedness.</p>
 <style type="text/css">
@@ -525,6 +532,7 @@ Hae Kyung Im, PhD
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</div>
 </section></section>
 <section>
 <section id="ld-score-regression" class="title-slide slide level1 center">

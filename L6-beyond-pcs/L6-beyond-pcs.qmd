@@ -264,6 +264,9 @@ GRM of 2 European and 2 African trios (mother, father, child) from HapMap (YRI, 
 
 ![](images/_page_23_Figure_0.jpeg)
 
+::: {.source-credit}
+Kang et al. *Variance component model to account for sample structure in genome-wide association studies.* Nature Genetics, 2010.
+:::
 ::: {.notes}
 Kang et al. compare uncorrected p-values (inflated), p-values corrected for 100 PCs (eigensoft), and EMMAX-corrected p-values. Panel b compares EMMAX to simple genomic control, showing similar correction. Notice that the authors use genomic control as a measure of goodness of fit.
 :::
@@ -288,6 +291,14 @@ Kang et al. compare uncorrected p-values (inflated), p-values corrected for 100 
 ![](images/_page_24_Figure_7.jpeg)
 :::
 ::::
+
+
+. . . 
+
+:::{.takehome}
+
+Mixed effects models are computationally expensive
+:::
 
 ::: {.notes}
 Mixed effects models are powerful but computationally expensive and can sometimes over-correct (deflation). Still today, the simpler approach of removing close relatives is common — in UK Biobank studies, over 100K individuals have been excluded to avoid relatedness.
