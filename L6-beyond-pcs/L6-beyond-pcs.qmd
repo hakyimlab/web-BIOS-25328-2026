@@ -30,19 +30,33 @@ But two questions remain:
 1. **PCs don't handle everything** — cryptic relatedness and family structure require a more principled model
 2. **Inflated λ doesn't always mean bias** — in large studies λ > 1 can reflect true polygenicity, not confounding
 
+::: {.notes}
+Last week we saw a striking example of what can go wrong in GWAS when samples come from different populations. The HapMap growth phenotype was different on average across populations, so when we ran GWAS naively, we got a J-shaped p-value histogram — far too many small p-values. Adding just four principal components as covariates fixed the problem: the histogram went back to the flat uniform shape we expect under the null.
+
+But this raises two important questions we didn't fully answer. First: PCs work well for broad ancestry differences, but what about cases where individuals are related to each other — like siblings, cousins, or even distant relatives in a biobank? PCs don't fully capture that. Second: when we see λ > 1, is it always bad? In very large studies with polygenic traits, most variants really do have tiny effects, and that can also inflate test statistics. So a blanket correction like dividing everything by λ might actually throw away real signal.
+
+Those two questions motivate everything in today's lecture.
+:::
+
 
 ## Learning Objectives
 
-1. Understand **genomic control** (λ inflation factor) 
+1. Understand **genomic control** (λ inflation factor)
 2. Build intuition for the **mixed effects model** (GRM as random effect) — answers question 1
 3. Understand the **kinship/GRM** as a random effect covariance structure
 
-. . . 
+. . .
 
 Time permitting
 
 4. Learn how **LD score regression** separates true polygenicity from confounding — answers question 2
 5. Interpret **genetic correlation** estimates from LD score regression
+
+::: {.notes}
+We have five goals today. The first three are core: understanding how genomic control works, building intuition for the mixed effects model, and understanding what the kinship/GRM matrix actually represents.
+
+The last two — LD score regression and genetic correlation — are the payoff of the lecture if we have time. LD score regression is one of the most widely used tools in modern human genetics, so it's worth the investment.
+:::
 
 
 ## 1. Genomic Control (Devlin & Roeder, 1999)
@@ -55,7 +69,11 @@ Time permitting
 - $\lambda < 1.05$ considered acceptable inflation
 
 ::: {.notes}
-Population stratification leads to inflation of false positives — more small p-values than we would expect under a uniform distribution. The genomic control method corrects for this by dividing all chi-squared statistics by the inflation factor λ. Using the median is more robust to true signals with large chi-squared statistics that could skew the mean.
+Genomic control is one of the earliest and simplest corrections for population stratification. The key assumption is that whatever is inflating test statistics — ancestry differences, cryptic relatedness — it inflates them all by roughly the same amount, uniformly across the genome.
+
+If that's true, we can estimate a single inflation factor λ and divide all our test statistics by it. We estimate λ from the median of the chi-squared distribution rather than the mean, because the median is more robust — a handful of truly associated SNPs with large statistics could pull the mean up without reflecting real confounding.
+
+The rule of thumb is λ < 1.05 is acceptable. This is still widely used as a quick sanity check even when more sophisticated methods are applied.
 :::
 
 
@@ -65,13 +83,21 @@ Population stratification leads to inflation of false positives — more small p
 
 ![](images/_page_6_Figure_1.jpeg)
 
+::: {.notes}
+A QQ-plot compares the distribution of p-values we observe against what we'd expect if no SNP had any association with the trait. Under the null hypothesis, p-values should be uniformly distributed — so the QQ-plot should follow the diagonal line.
+
+In a well-controlled GWAS, most points sit on the diagonal (no inflation), and only a few points — the true hits — peel off at the top. That's exactly what a good GWAS looks like. Although, this reasoning needs to be updated given current sample sizes — with hundreds of thousands of samples, even a truly polygenic trait will show a lifted QQ-plot that doesn't indicate confounding. That's the subject of the LDSC section.
+:::
+
 
 ## Genomic Control Adjustment
 
 ![](images/_page_7_Figure_0.jpeg)
 
 ::: {.notes}
-A dumb case-control study with all cases from one population and all controls from another. Chi-squared of these associations before and after genomic control correction. One can also adjust with medians to keep it robust to outliers.
+This is a deliberately extreme example: all the cases come from one population, all the controls from another. This creates massive inflation. Every SNP that differs in frequency between the populations looks associated, even though none of them are truly causal for the trait.
+
+After applying genomic control — dividing every chi-squared statistic by λ — the inflation is corrected. The key point is that this correction is blunt: it treats every SNP the same, whether the inflation is due to stratification or due to real signal.
 :::
 
 
@@ -89,7 +115,9 @@ $$Y = X\beta + \epsilon$$
 Works well when individuals are unrelated and ancestry is homogeneous
 
 ::: {.notes}
-Standard GWAS uses ordinary linear regression: phenotype Y is regressed on genotype X. This assumes residuals are independent — which breaks down when samples are related or have different ancestries.
+Before introducing mixed effects models, let's remind ourselves of what we already know. Standard GWAS uses simple linear regression: we regress the phenotype Y on genotype X for each SNP. The coefficient β tells us how much the phenotype changes per copy of the effect allele.
+
+This works well when individuals are independent and ancestry is homogeneous. But when some individuals are related, their phenotypes are correlated for reasons beyond the SNP being tested — and that correlation violates the independence assumption of ordinary regression.
 :::
 
 ## Extending the Regression Model with a Random Effect
@@ -111,7 +139,11 @@ Kang et al. *Variance component model to account for sample structure in genome-
 :::
 
 ::: {.notes}
-Mixed effects models are regression models with both fixed and random effects. β is a fixed effect; u is a random effect specified by its distribution. When K is the genetic relatedness matrix, this model accounts for population structure, family structure, and cryptic relatedness.
+The mixed effects model adds one new term to the regression: a random effect u. Think of u as a "background genetic similarity" term that absorbs the phenotypic correlation due to shared ancestry or relatedness.
+
+The key insight: we don't estimate u for each individual directly. Instead, we describe its distribution. We say u behaves like a draw from a normal distribution whose variance is shaped by a matrix K — the genetic relatedness matrix. When two individuals are genetically similar, their u values are also expected to be similar. That's what K encodes.
+
+The word "mixed" in mixed effects model refers to having both fixed effects (β, the SNP we're testing) and random effects (u, the background structure).
 :::
 
 
@@ -126,7 +158,11 @@ $$\begin{bmatrix} y_1 \\ y_2 \\ y_3 \\ y_4 \end{bmatrix} = \begin{bmatrix} x_1 \
 $$Y \sim N(X\beta,\; \sigma_g^2 \cdot \mathbf{K} + \sigma_e^2 \cdot \mathbf{I})$$
 
 ::: {.notes}
-A simple example with 4 individuals: two from EUR ancestry and two from AFR ancestry, no family structure or cryptic relatedness. Here u represents the effect of population membership on phenotype Y. K represents the population pattern; σ_g is the scale of that effect.
+Let's make this concrete with just 4 individuals: 2 from AFR ancestry, 2 from EUR ancestry. We can write out all four components of the model as vectors.
+
+The phenotype vector Y has four entries. The fixed part Xβ — the SNP effect — is a scalar β times the vector of genotypes. The random effect u is a vector of four numbers, one per individual. The residual ε is also a vector of four numbers.
+
+The key result is the distribution of Y overall: it's a multivariate normal with mean Xβ and variance that's a combination of the genetic structure (σ²g · K) and the residual noise (σ²e · I). This is the equation that the EMMAX software, one implementation of the mixed effects model, fits.
 :::
 
 
@@ -141,7 +177,9 @@ $$\begin{bmatrix} u_1 \\ u_2 \\ u_3 \\ u_4 \end{bmatrix} \sim N \left( \begin{bm
 $u$ is a multivariate normal random variable
 
 ::: {.notes}
-The random effect u is multivariate normal with mean 0 and variance σ²_g · K. The matrix K encodes the genetic similarity between individuals.
+The random effect u is a vector drawn from a multivariate normal distribution. The mean is zero — we're not saying individuals from one population have higher phenotypes, just that their u values are correlated with each other.
+
+The variance matrix is σ²g · K. Think of K as a "similarity map" between individuals. If individual 1 and individual 2 are from the same population, their u values are expected to covary — they have similar genetic backgrounds, so they'll tend to have similar background effects on phenotype.
 :::
 
 
@@ -156,7 +194,9 @@ $$\begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \epsilon_3 \\ \epsilon_4 \end{bmat
 $\epsilon$ is a multivariate normal random variable
 
 ::: {.notes}
-Epsilon is also multivariate normal with variance σ²_e · I. The identity matrix means residuals are independent across individuals — the random effect u captures the correlated structure.
+The residual ε captures everything the model doesn't explain — environmental noise, measurement error, and any genetic effects not captured by K. We assume these residuals are independent across individuals: knowing that individual 1's residual is large tells us nothing about individual 2's.
+
+That's why the variance of ε is σ²e · I — the identity matrix, all ones on the diagonal, all zeros off-diagonal. This is the same independence assumption as ordinary regression.
 :::
 
 
@@ -179,12 +219,24 @@ $$Y \sim N(X\beta,\; \sigma_g^2 \cdot \mathbf{K} + \sigma_e^2 \cdot \mathbf{I})$
 :::
 
 ::: {.notes}
-Since u and ε are both normal and independent, their sum is also normal. The mean is Xβ (the fixed part) and the variance is σ²_g · K + σ²_e · I (genetic structure + residual noise).
+Before we move on, let's check understanding. If u is normal and ε is normal, what is Y = Xβ + u + ε?
+
+The answer is also normal. The mean is Xβ — the fixed, deterministic part. The variance is the sum of the two random parts: σ²g · K from the genetic structure, plus σ²e · I from the independent residuals.
+
+This is the core equation of the mixed effects model. Everything else — estimation, testing, software — is built on top of this distribution.
 :::
 
 ## Setup: K for 4 Individuals, 2 Populations
 
 ![](images/_page_17_Figure_0.jpeg)
+
+::: {.notes}
+Now let's build intuition for what K actually looks like in a specific example. We have 4 individuals: individuals 1 and 2 are from AFR ancestry, individuals 3 and 4 from EUR ancestry.
+
+The setup assigns one random effect value per population: u_AFR for both AFR individuals, u_EUR for both EUR individuals. We also assume the two population random effects are independent — AFR and EUR populations have separate genetic backgrounds.
+
+From these simple assumptions, we can figure out what K must look like.
+:::
 
 ## Deriving K — Setting Up the Variance
 
@@ -194,10 +246,14 @@ $$\sigma_g^2 \cdot K = \text{Var}(u) \qquad \small\text{recall: } \text{Var}(u) 
 
 $$\text{Var}\begin{bmatrix}u_1\\u_2\\u_3\\u_4\end{bmatrix} = Euu' = E\!\left(\begin{array}{ll}\begin{bmatrix}u_1\\u_2\\u_3\\u_4\end{bmatrix} & \begin{array}{l}[u_1\;u_2\;u_3\;u_4]\\\phantom{u}\\\phantom{u}\\\phantom{u}\\\phantom{u}\end{array}\end{array}\right)$$
 
-> $Eu_{\rm AFR} = Eu_{\rm EUR} = 0 \qquad Eu_{\rm AFR}^2 = Eu_{\rm EUR}^2 = \sigma_g^2 \qquad Eu_{\rm AFR} \cdot u_{\rm EUR} = 0$
+> $Eu_{\mathrm{AFR}} = Eu_{\mathrm{EUR}} = 0 \qquad Eu_{\mathrm{AFR}}^2 = Eu_{\mathrm{EUR}}^2 = \sigma_g^2 \qquad Eu_{\mathrm{AFR}} \cdot u_{\mathrm{EUR}} = 0$
 
 ::: {.notes}
-Var(u) equals E[uu'] because E(u)=0. The outer product of the u vector with itself gives a 4×4 matrix whose (i,j) entry is u_i u_j.
+To find K, we need to compute the variance of the u vector. Variance of a vector is defined as E[uu'], where the prime means transpose.
+
+Don't worry too much about the matrix algebra here. The key insight is: Var(u) = E[uu'] is a 4×4 matrix where entry (i,j) is the expected product of u_i and u_j. That's just a covariance — how much do individual i's and individual j's random effects move together?
+
+The assumptions stated at the bottom do all the work: each u has variance σ²g, and u_AFR and u_EUR are independent (zero covariance).
 :::
 
 ## Deriving K — Expanding the Outer Product
@@ -211,7 +267,9 @@ $$\sigma_g^2 \cdot \mathbf{K} = E\begin{bmatrix} u_1 u_1 & u_1 u_2 & u_1 u_3 & u
 *expected value ($E$) of a matrix is the $E$ of each element of the matrix*
 
 ::: {.notes}
-The expectation of a matrix is taken elementwise. Each entry (i,j) becomes E[u_i u_j].
+When we multiply the column vector u by the row vector u', we get a 4×4 matrix of products u_i · u_j. This is the outer product.
+
+Taking the expectation of this matrix means taking the expectation of each entry separately. Entry (1,2) is E[u₁u₂], entry (1,3) is E[u₁u₃], and so on. Now we just need to fill in what each of those expectations equals given our assumptions.
 :::
 
 ## Deriving K — Taking Expectations
@@ -222,12 +280,16 @@ $$\sigma_g^2 \cdot K = \text{Var}(u) \qquad \small\text{recall: } \text{Var}(u) 
 
 $$\sigma_g^2 \cdot \mathbf{K} = \begin{bmatrix} Eu_1 u_1 & Eu_1 u_2 & Eu_1 u_3 & Eu_1 u_4 \\ Eu_2 u_1 & Eu_2 u_2 & Eu_2 u_3 & Eu_2 u_4 \\ Eu_3 u_1 & Eu_3 u_2 & Eu_3 u_3 & Eu_3 u_4 \\ Eu_4 u_1 & Eu_4 u_2 & Eu_4 u_3 & Eu_4 u_4 \end{bmatrix}$$
 
-> $Eu_{\rm AFR} = Eu_{\rm EUR} = 0 \qquad Eu_{\rm AFR}^2 = Eu_{\rm EUR}^2 = \sigma_g^2 \qquad Eu_{\rm AFR} \cdot u_{\rm EUR} = 0$
+> $Eu_{\mathrm{AFR}} = Eu_{\mathrm{EUR}} = 0 \qquad Eu_{\mathrm{AFR}}^2 = Eu_{\mathrm{EUR}}^2 = \sigma_g^2 \qquad Eu_{\mathrm{AFR}} \cdot u_{\mathrm{EUR}} = 0$
 
-> $u_1 = u_2 = u_{\rm AFR}~~~$ and $~~~u_3 = u_4 = u_{\rm EUR}$
+> $u_1 = u_2 = u_{\mathrm{AFR}}~~~$ and $~~~u_3 = u_4 = u_{\mathrm{EUR}}$
 
 ::: {.notes}
-Now apply the assumptions: within-population variance = σ²_g; between-population covariance = 0.
+Now we apply the assumptions. Individuals 1 and 2 are both AFR, so u₁ = u₂ = u_AFR. Their product u₁u₂ = u²_AFR, and E[u²_AFR] = σ²g.
+
+Individual 1 is AFR, individual 3 is EUR. Those are from different populations, so u₁ and u₃ are independent — E[u₁u₃] = E[u_AFR] · E[u_EUR] = 0 · 0 = 0.
+
+So the off-diagonal blocks between AFR and EUR are all zeros; the diagonal blocks within each population are all σ²g.
 :::
 
 ## Deriving K — Final Result
@@ -238,12 +300,16 @@ $$\sigma_g^2 \cdot K = \text{Var}(u) \qquad \small\text{recall: } \text{Var}(u) 
 
 $$\sigma_g^2 \cdot \mathbf{K} = \sigma_g^2 \cdot \begin{bmatrix} 1 & 1 & 0 & 0 \\ 1 & 1 & 0 & 0 \\ 0 & 0 & 1 & 1 \\ 0 & 0 & 1 & 1 \end{bmatrix}$$
 
-> $Eu_{\rm AFR} = Eu_{\rm EUR} = 0 \qquad Eu_{\rm AFR}^2 = Eu_{\rm EUR}^2 = \sigma_g^2 \qquad Eu_{\rm AFR} \cdot u_{\rm EUR} = 0$
+> $Eu_{\mathrm{AFR}} = Eu_{\mathrm{EUR}} = 0 \qquad Eu_{\mathrm{AFR}}^2 = Eu_{\mathrm{EUR}}^2 = \sigma_g^2 \qquad Eu_{\mathrm{AFR}} \cdot u_{\mathrm{EUR}} = 0$
 
-> $u_1 = u_2 = u_{\rm AFR}~~~$ and $~~~u_3 = u_4 = u_{\rm EUR}$
+> $u_1 = u_2 = u_{\mathrm{AFR}}~~~$ and $~~~u_3 = u_4 = u_{\mathrm{EUR}}$
 
 ::: {.notes}
-Within-population pairs (AFR-AFR, EUR-EUR) have K=1; between-population pairs have K=0. The σ²_g cancels, leaving the block structure of K.
+After all the expectations, we get K as a block matrix: 1s within the same population, 0s between populations. The σ²g cancels out from both sides.
+
+This makes intuitive sense: individuals from the same population have K=1 (fully correlated background), individuals from different populations have K=0 (independent backgrounds). The model treats all AFR individuals as equally related to each other, and similarly for EUR.
+
+In real data, of course, K isn't a perfect block matrix — individuals within a population vary in how related they are, and that's what the genomic relationship matrix captures.
 :::
 
 
@@ -256,7 +322,11 @@ Within-population pairs (AFR-AFR, EUR-EUR) have K=1; between-population pairs ha
 :::
 
 ::: {.notes}
-GRM of 2 European and 2 African trios (mother, father, child) from HapMap (YRI, CEU) calculated using plink's --make-grm-gz. The 6×6 population blocks are visible, and the 3×3 family blocks (trios) are nested within them. Random mating within populations is a reasonable assumption. Can you identify which individual is the child within each trio?
+Here's what K looks like for a real dataset. This is the GRM computed from HapMap data for 6 individuals: 2 EUR trios and 2 AFR trios (a mother, father, and child from each population).
+
+You can clearly see the block structure: within-population pairs (the large 6×6 blocks) have higher values than between-population pairs. Within each trio (the 3×3 blocks), relatedness is even higher — parents and children share ~50% of their genome.
+
+A fun question: can you tell which individual in each trio is the child? The child shares ~50% of their genome with each parent, so they have higher GRM values with both parents than the parents have with each other. Look for the individual with the two highest off-diagonal values within a trio.
 :::
 
 
@@ -268,7 +338,11 @@ GRM of 2 European and 2 African trios (mother, father, child) from HapMap (YRI, 
 Kang et al. *Variance component model to account for sample structure in genome-wide association studies.* Nature Genetics, 2010.
 :::
 ::: {.notes}
-Kang et al. compare uncorrected p-values (inflated), p-values corrected for 100 PCs (eigensoft), and EMMAX-corrected p-values. Panel b compares EMMAX to simple genomic control, showing similar correction. Notice that the authors use genomic control as a measure of goodness of fit.
+This figure from Kang et al. 2010 is the key validation of EMMAX (the mixed effects model software). Panel a compares uncorrected p-values (badly inflated) against 100-PC-corrected p-values and EMMAX-corrected p-values.
+
+The striking result: EMMAX correction is very similar to genomic control in this dataset. Panel b shows the comparison directly. This tells us the mixed effects model is doing the job expected of genomic control — but it's doing it in a principled, model-based way rather than a uniform scaling hack.
+
+Notice the authors use λ itself as a goodness-of-fit measure to compare methods.
 :::
 
 
@@ -301,7 +375,37 @@ Mixed effects models are computationally expensive
 :::
 
 ::: {.notes}
-Mixed effects models are powerful but computationally expensive and can sometimes over-correct (deflation). Still today, the simpler approach of removing close relatives is common — in UK Biobank studies, over 100K individuals have been excluded to avoid relatedness.
+In practice today, most large GWAS don't use pure mixed effects models. They use a combination: remove close relatives (to keep computational burden down), correct for broad ancestry structure with PCs, and apply genomic control as a final cleanup.
+
+Why not always use the mixed effects model? Two reasons: (1) it's computationally expensive — fitting a full GRM for 500K individuals requires solving large matrix equations; (2) it can sometimes over-correct, deflating true signals. (There are methods that address this deflation.)
+
+The UK Biobank approach, for example, excluded over 100K individuals to remove close relatives before analysis. That's a significant cost in sample size, but it keeps the analysis tractable.
+:::
+
+
+## Where We Are
+
+**So far:** Mixed effects models handle cryptic relatedness and family structure — answering open question 1
+
+- Model: $Y = X\beta + u + \epsilon$, where $u \sim N(0, \sigma_g^2 \cdot K)$
+- K encodes genetic similarity; correlated individuals share correlated background effects
+- In practice: remove close relatives + use PCs + genomic control as cleanup
+
+. . .
+
+**Open question 2 remains:** When we see $\lambda > 1$, is it confounding — or real polygenicity?
+
+- Genomic control can't tell the difference
+- Dividing by $\lambda$ when the inflation is real signal throws away biology
+
+. . .
+
+**Next:** LD score regression — a method that separates these two causes
+
+::: {.notes}
+This is a good moment to pause and take stock. We've covered the mixed effects model — the principled answer to cryptic relatedness and family structure. In practice, most studies use a simpler combination strategy, but knowing the mixed effects model gives you the conceptual foundation.
+
+Now we turn to the second open question: what does λ > 1 actually mean in large studies? We'll see that genomic control is dangerous when the trait is highly polygenic, and that LD score regression gives us a smarter way to distinguish real signal from confounding.
 :::
 
 
@@ -314,6 +418,10 @@ To understand genomic control, we need to know what is a statistic.
 
 In statistics terminology, a statistic is a function of the data
 
+::: {.notes}
+Before diving into LD score regression, a quick conceptual anchor. In statistics, a "statistic" is simply any function computed from the data. The test statistic from a GWAS — whether it's a Z-score, p-value, chi-squared, or beta — is just a different way of summarizing the same underlying association signal.
+:::
+
 
 ## Examples of Statistics
 
@@ -321,6 +429,12 @@ In statistics terminology, a statistic is a function of the data
 
 ::: {.source-credit}
 [bios25328.hakyimlab.org/post/2022/04/13/calculate-z-score-p-value-chi2-stat-from-gwas/](https://bios25328.hakyimlab.org/post/2022/04/13/calculate-z-score-p-value-chi2-stat-from-gwas/)
+:::
+
+::: {.notes}
+Z-scores, p-values, chi-squared statistics, and regression betas are all mathematically related — you can convert between them if you know the sample size. This figure shows those conversions.
+
+This matters because GWAS summary statistics are shared publicly in many different formats. Knowing how to convert between them is a practical skill.
 :::
 
 
@@ -336,7 +450,12 @@ Inflation of summary statistics can be due to:
 **Genomic control cannot distinguish between these two.** Dividing by λ punishes real signal.
 
 ::: {.notes}
-This is the central question of the LDSC section. A flat correction like genomic control is dangerous for polygenic traits — it removes true signal. LD score regression was developed precisely to separate these two contributions.
+This is the conceptual heart of LD score regression. When we see λ > 1 — more inflation than expected — there are two completely different explanations:
+
+1. **Confounding**: population structure or cryptic relatedness artificially inflates statistics. This is a bias we want to remove.
+2. **True polygenicity**: for a highly polygenic trait like height or schizophrenia, almost every common variant has a tiny causal effect. That's real signal, not a bias.
+
+Genomic control can't tell these apart — it just divides everything by λ. If the inflation is mostly polygenicity, genomic control throws away real signal. LD score regression was invented to solve this problem.
 :::
 
 
@@ -345,7 +464,11 @@ This is the central question of the LDSC section. A flat correction like genomic
 ![](images/_page_27_Figure_0.jpeg)
 
 ::: {.notes}
-A locus-zoom-like plot with chi-squared statistics instead of p-values. Variants in high-LD regions have higher association statistics — they tag more causal variants. Variants with many "LD friends" are lifted up because they are more likely to tag causal variants.
+This plot shows chi-squared association statistics across a genomic region. Notice that high chi-squared statistics cluster in high-LD regions — SNPs that have many "LD friends."
+
+The intuition: if there's a causal variant in a region, every SNP in LD with it will show some association — it's tagging the causal variant. SNPs with more LD friends are more likely to be tagging a causal variant somewhere nearby, so they tend to have higher statistics on average.
+
+This LD-dependence of test statistics is the signal that LD score regression exploits.
 :::
 
 
@@ -358,7 +481,9 @@ $$l_j = \sum_k r_{j,k}^2$$
 - SNPs in high-LD regions have high LD scores
 
 ::: {.notes}
-The LD score is the number of "LD friends" — calculated as the sum of r² with all neighboring variants. Each genetic variant has one LD score.
+The LD score for a SNP is simply the sum of its r² values with all nearby SNPs. It measures how many genetic variants a given SNP is tagging — how many "LD friends" it has.
+
+SNPs in gene-dense, high-LD regions (like the MHC) have very high LD scores. SNPs in sparse, low-LD regions have low LD scores. This varies a lot across the genome.
 :::
 
 
@@ -371,7 +496,11 @@ $$Y = \sum_{k}^{M} X_k \cdot \beta_k + \epsilon \qquad \beta \sim N(0, \sigma_{\
 - This is the main model for common disease genetics
 
 ::: {.notes}
-Under this polygenic model, variants in high-LD regions are more likely to tag causal variants, so they will have higher chi-squared statistics on average. This is the key insight underlying LD score regression.
+The polygenic model assumes that all common SNPs contribute to phenotype, each with a tiny effect drawn from a normal distribution. This is the standard model for complex trait genetics.
+
+Under this model, a SNP with a high LD score is expected to have a higher chi-squared statistic on average — not because it's special itself, but because it's tagging more causal variants scattered around it.
+
+Importantly, confounding from population stratification does NOT have this property. Stratification affects all SNPs equally regardless of their LD structure.
 :::
 
 
@@ -385,13 +514,28 @@ $$E[\chi^2 \mid l_j] = \frac{Nh^2}{M} l_j + Na + 1$$
 ![](images/_page_30_Figure_0.jpeg)
 
 ::: {.notes}
-Bulik-Sullivan et al. show we can distinguish inflation due to confounding (flat line, intercept > 1) from polygenicity (positive slope proportional to LD score). Variants in high-LD regions have higher chi-squared due to tagging more causal variants. Inflation from cryptic relatedness or population stratification from genetic drift does NOT correlate with LD score.
+This equation is the key result of Bulik-Sullivan et al. 2015. On the left: the expected chi-squared statistic for SNP j. On the right: a linear function of the LD score l_j.
+
+The slope (Nh²/M) tells us about true polygenicity and heritability. If there's more real signal (higher h²), high-LD-score SNPs will have systematically higher statistics.
+
+The intercept (Na + 1) tells us about confounding. Confounding inflates all statistics equally regardless of LD score — so it shows up as an elevated intercept, not a steeper slope.
+
+By fitting this regression, we can quantify how much inflation is confounding and how much is real biology.
 :::
 
 
 ## LD Score Regression — Parameters
 
 ![](images/_page_32_Figure_1.jpeg)
+
+::: {.notes}
+A summary of what each parameter in the LDSC equation means. The key ones to internalize:
+
+- N is sample size — bigger studies have larger slopes
+- h² is heritability — more heritable traits have steeper slopes
+- a is confounding — if a > 0, there's population stratification or cryptic relatedness bias
+- l_j is the LD score — the independent variable in the regression
+:::
 
 | Parameter | Meaning |
 |-----------|---------|
@@ -407,7 +551,9 @@ Bulik-Sullivan et al. show we can distinguish inflation due to confounding (flat
 ![](images/_page_33_Figure_1.jpeg)
 
 ::: {.notes}
-Schizophrenia has a very high LD score regression intercept, indicating substantial true polygenicity in addition to any confounding. The positive slope shows that SNPs with more LD friends have systematically higher chi-squared statistics.
+Schizophrenia is one of the landmark applications of LDSC. The plot shows chi-squared statistics for schizophrenia GWAS SNPs plotted against their LD scores. The positive slope is clear — high-LD-score SNPs have higher statistics on average.
+
+This is the signature of true polygenicity: the inflation is not random, it correlates with LD score. That's what separates it from stratification.
 :::
 
 
@@ -427,7 +573,11 @@ Schizophrenia has a very high LD score regression intercept, indicating substant
 | Type 2 diabetes | 1.116 | 1.097 | 1.025 (0.008) |
 
 ::: {.notes}
-Notice that the LDSC intercept is systematically smaller than the genomic control λ. For schizophrenia, λ=1.613 looks alarming, but the LDSC intercept is only 1.070 — most of the inflation is true polygenicity, not confounding. Genomic control would have over-corrected.
+This table is the key payoff. Look at schizophrenia: λ_GC = 1.613, which looks alarming. A naive analyst might conclude this GWAS is badly confounded. But the LDSC intercept is only 1.070 — almost all of the inflation is true polygenicity, not confounding.
+
+If genomic control had been applied to correct for λ = 1.613, it would have discarded most of the real signal in the data. LDSC tells us: don't correct this, it's biology.
+
+Contrast with ADHD, where λ ≈ 1.033 and the LDSC intercept ≈ 1.008. That's a clean study with minimal confounding and (at the time) modest polygenicity signal.
 :::
 
 
@@ -438,7 +588,7 @@ Notice that the LDSC intercept is systematically smaller than the genomic contro
 Calculated by Yanyu Liang using GTEx V8 reference variant set
 
 ::: {.notes}
-LD scores vary considerably across the chromosome, reflecting the local LD structure. Regions with high LD have high LD scores; sparse regions have low LD scores.
+This plot shows how LD scores vary across chromosome 22. They're not uniform — regions with more SNPs in LD with each other have higher scores. This spatial variation is what makes the LDSC regression work: we can regress against a variable (LD score) that differs systematically across the genome.
 :::
 
 
@@ -451,7 +601,11 @@ With the same assumptions, LD score regression can estimate **genetic correlatio
 $$E[z_{1j} z_{2j} \mid l_j] = \frac{\sqrt{N_1 N_2}}{M} \varrho_g \cdot l_j + \frac{\varrho N_s}{\sqrt{N_1 N_2}}$$
 
 ::: {.notes}
-By regressing the product of Z-scores of two traits against LD scores, we can estimate their genetic correlation. This avoids confounders in observational studies and provides orthogonal evidence for associations.
+One of the most powerful extensions of LD score regression: estimating genetic correlation between two traits from their summary statistics alone.
+
+The intuition is the same: if two traits share genetic architecture, then SNPs with high LD scores should have correlated Z-scores across both GWAS. By regressing the product of Z-scores on LD scores, we estimate how much of the genetic signal is shared.
+
+This is a huge deal because it gives us genetic correlations without needing the raw data — just the public summary statistics.
 :::
 
 
@@ -464,11 +618,24 @@ $$E[z_{1j} z_{2j} \mid l_j] = \frac{\sqrt{N_1 N_2}}{M} \varrho_g \cdot l_j + \fr
 By partitioning LD scores into functional categories, we can also **partition heritability by functional annotation**.
 
 ::: {.notes}
-The same LD score regression framework extends to estimate: heritability, confounding bias, genetic correlation between traits, and partitioned heritability by functional category. This is a very powerful unified framework from a single GWAS run.
+The same LDSC framework gives us three things from GWAS summary statistics:
+1. Heritability (from the slope of the chi-squared vs. LD score regression)
+2. Confounding bias (from the intercept)
+3. Genetic correlation between traits (from the cross-trait Z-score product regression)
+
+And as an extension: partitioned heritability by functional annotation — which parts of the genome (coding regions, enhancers, etc.) contribute most to heritability.
+
+All of this from a simple regression of summary statistics against LD scores.
 :::
 
 
 ## Genetic Correlation Among Cancers
+
+::: {.notes}
+This table shows pairwise genetic correlations among six cancers estimated by LDSC. Most correlations are modest, but some are notable: colorectal and pancreatic cancer have a genetic correlation of 0.55, suggesting shared biology.
+
+Breast and lung cancer show a genetic correlation of 0.27, which is interesting given how different these cancers are biologically. This raises hypotheses about shared risk factors or pathways.
+:::
 
 | | Breast | Colorectal | Lung | Ovarian | Pancreatic | Prostate |
 |---|---|---|---|---|---|---|
@@ -488,6 +655,10 @@ The same LD score regression framework extends to estimate: heritability, confou
 
 ![](images/_page_39_Figure_1.jpeg)
 
+::: {.notes}
+Describe the key patterns visible in the figure when presenting — which cancers show notable genetic correlations with non-cancer diseases, and what biological hypotheses that raises.
+:::
+
 
 ## Caveat: Assortative Mating Confounds Genetic Correlation
 
@@ -498,7 +669,9 @@ Border et al. *Cross-trait assortative mating is widespread and inflates genetic
 :::
 
 ::: {.notes}
-If people mate non-randomly based on traits that are genetically correlated, this creates spurious genetic correlations. The Brainstorm Consortium and Border et al. show this is a real concern for psychiatric disorders.
+Genetic correlation estimates from LDSC can be inflated by a subtle confound: assortative mating. If people tend to partner with others who share similar traits — and those traits are genetically correlated — then the genomes of people in a population will have non-random correlations that mimic genetic correlation.
+
+Border et al. 2022 showed this is a real problem, especially for psychiatric traits. So genetic correlations from LDSC should be interpreted as estimates that may be upwardly biased for traits where assortative mating is common.
 :::
 
 
@@ -511,5 +684,9 @@ Brainstorm Consortium. *Analysis of shared heritability in common disorders of t
 :::
 
 ::: {.notes}
-The Brainstorm Consortium estimated genetic correlations among 25 brain disorders. Many psychiatric disorders show high genetic correlations with each other, suggesting shared biological mechanisms.
+The Brainstorm Consortium estimated genetic correlations among 25 brain disorders using LDSC. The key finding: many psychiatric disorders are strongly genetically correlated with each other. ADHD, major depression, and bipolar disorder, for example, share substantial genetic architecture.
+
+This suggests that the sharp diagnostic boundaries in psychiatry (DSM categories) don't fully reflect the underlying biology. The genetics sees a more continuous landscape of shared risk.
+
+Keep in mind the assortative mating caveat — psychiatric traits are exactly the ones most likely to be affected by cross-trait assortative mating.
 :::
