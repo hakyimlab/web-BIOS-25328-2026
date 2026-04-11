@@ -12,6 +12,7 @@ format:
     code-summary: "Show the code"
     code-tools: true
     code-overflow: wrap
+description: "HapMap3 PCA, GWAS, GRM, and Marees tutorial (L5–L6)"
 date-modified: last-modified
 draft: false
 ---

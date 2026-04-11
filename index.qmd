@@ -3,6 +3,7 @@ title: "BIOS 25328"
 listing:
   contents:
     - "L*/page-*.qmd"
+    - "post/*.qmd"
   sort: "date asc"
   type: default
   categories: true
