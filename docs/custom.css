@@ -58,3 +58,12 @@
   border-radius: 10px;
   text-align: left;
 }
+
+.reveal .formula {
+  background-color: #f0f4ff;
+  border-radius: 10px;
+  padding: 0.8em 1.5em;
+  margin: 1.2em auto;
+  display: table;
+  min-width: 30%;
+}
