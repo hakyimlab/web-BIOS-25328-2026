@@ -1,0 +1,15 @@
+Multi-panel figure showing differences in allele frequency and linkage disequilibrium (LD) structure across AFR (African), EUR (European), and EAS (East Asian) populations.
+
+Panel a: Schematic illustration of population bottlenecks. A wide arch (representing AFR) splits into two narrower arches (EUR and EAS), depicting reduced genetic diversity outside Africa.
+
+Panel b: Density plot of minor allele frequency (MAF) at GWAS-catalog sites for three populations:
+  - EAS (blue): sharply peaked near MAF = 0, indicating many low-frequency variants
+  - AFR (purple): intermediate
+  - EUR (red): flatter distribution with more variants at higher MAF
+
+Panels c, d, e: Pairwise LD heatmaps (blue color scale, 0.0 to 1.0) comparing:
+  - c: AFR (rows) vs EAS (columns)
+  - d: EAS (rows) vs EUR (columns)
+  - e: AFR (rows) vs EUR (columns)
+
+The heatmaps show that LD block structure differs substantially across ancestries, which has implications for portability of GWAS findings and PRS across populations.

@@ -1,9 +1,0 @@
----
-title: "L6 · Mixed Effects Models & LD Score Regression"
-date: '2025-04-14'
-author: "Hae Kyung Im, PhD"
-description: "BIOS 25328 · Lecture 6"
-categories: [slides]
----
-
-[Open slide deck](L6-Mixed-Effects-Models-LDSC-2025.html){.btn .btn-primary .btn-lg}

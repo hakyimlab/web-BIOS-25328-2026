@@ -1,0 +1,13 @@
+Slide titled "Performance decays with genetic distance to training population" (slide 41).
+
+Four panels from Ding et al. 2023 Nature, showing that PGS accuracy decreases as individuals are more genetically distant from the training population.
+
+Panel a: PCA plot of individuals colored by ancestry group (African, East Asian, European, Hispanic Latino American, South Asian, Unclassified). An arrow indicates the PGS training population cluster (European).
+
+Panel b: Box plots of population-level PGS accuracy (y-axis) across ancestry groups (x-axis: European, Hispanic Latino American, South Asian, East Asian, African, Unclassified). Accuracy decreases progressively from European to African.
+
+Panel c: Schematic in PCA space showing vectors d1 < d2 < d3 < d4 representing increasing genetic distances from the training population, with corresponding decrease in accuracy r1² > r2² > r3² > r4².
+
+Panel d: Scatter plot of individual-level PGS accuracy (y-axis) vs genetic distance to training population on the genetic ancestry continuum (x-axis), colored by ancestry. Shows a clear negative correlation across individuals.
+
+Source: Polygenic scoring accuracy varies across the genetic ancestry continuum. Ding et al 2023 Nature. https://www.nature.com/articles/s41586-023-06079-4

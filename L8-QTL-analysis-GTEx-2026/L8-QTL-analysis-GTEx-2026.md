@@ -4,7 +4,7 @@ Hae Kyung Im, PhD
 
 ![](_page_0_Picture_2.jpeg)
 
-\*\*UPDATE\*\* April 21, 2026
+\*\*UPDATE\*\* April 15, 2026
 
 In this lecture, we will go over methods that try to find genes that cause the disease and changes in complex traits in general. For generally, methods that try to explain the mechanism by which GWAS variants modify phenotype.
 

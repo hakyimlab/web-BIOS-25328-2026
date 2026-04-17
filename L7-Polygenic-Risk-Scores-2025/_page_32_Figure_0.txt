@@ -1,0 +1,9 @@
+Slide titled "PRS Differences Between Cases and Controls Are Modest" (slide 33).
+
+Density plot comparing the distribution of polygenic risk scores (PRS) for T2D cases vs controls:
+  - X-axis: PRS values (approximately -0.022 to -0.019)
+  - Y-axis: Density (0 to ~1200)
+  - Pink distribution: T2D = FALSE (controls)
+  - Teal distribution: T2D = TRUE (cases)
+
+The two distributions overlap almost entirely, with peaks around -0.021. While there is a slight rightward shift for cases, the overlap is substantial, illustrating that at the individual level the PRS difference between cases and controls is statistically detectable but practically modest.

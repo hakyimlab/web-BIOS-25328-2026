@@ -2,7 +2,7 @@
 title: "eQTL Analysis, Fine-Mapping, and Heritability Enrichment"
 subtitle: "BIOS 25328 · Lecture 8"
 author: Hae Kyung Im, PhD
-date: '2026-04-21'
+date: '2026-04-15'
 date-modified: last-modified
 format:
   revealjs:

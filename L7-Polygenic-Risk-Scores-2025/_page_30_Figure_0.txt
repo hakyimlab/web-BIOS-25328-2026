@@ -1,0 +1,9 @@
+Slide titled "Prevalence of Coronary Artery Disease Increases with PRS" (slide 31).
+
+Panel C: Scatter plot showing:
+  - X-axis: Percentile of polygenic score (0 to 100)
+  - Y-axis: Prevalence of CAD (%) ranging from 0 to ~11%
+
+Data points (dark blue dots) show a monotonically increasing and accelerating trend. Prevalence is ~1% at low PRS percentiles and rises sharply to ~11% at the 100th percentile, illustrating a strong association between high polygenic risk score and coronary artery disease prevalence.
+
+Source: Khera et al (2018) Nature Genetics.

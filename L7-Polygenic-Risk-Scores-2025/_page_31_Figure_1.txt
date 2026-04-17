@@ -1,0 +1,6 @@
+Dot plot showing prevalence of Type 2 Diabetes (T2D) by polygenic score grouping.
+
+  - X-axis: Polygenic score grouping (1 to ~40, representing increasing PRS bins)
+  - Y-axis: Prevalence of T2D (%), ranging from 0 to 12%
+
+Gray horizontal bands indicate reference ranges. The dotted line connecting gray circle data points shows a gradual increase from ~1% prevalence in the lowest PRS group to ~11% in the highest group. The rise accelerates markedly in the top few bins (groups 38-40), illustrating non-linear enrichment of T2D risk at the high end of the polygenic score distribution.

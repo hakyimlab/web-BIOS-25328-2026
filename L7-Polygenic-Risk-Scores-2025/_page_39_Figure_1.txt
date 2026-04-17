@@ -1,0 +1,15 @@
+Violin plot showing PRS prediction accuracy across populations, expressed relative to Europeans.
+
+  - X-axis: Population groups (European, American, South Asian, East Asian, African)
+  - Y-axis: Prediction accuracy relative to Europeans (0.00 to 1.00)
+
+Each violin shows the distribution of accuracy values across traits/studies, with a black dot indicating the mean and error bars the confidence interval.
+
+Results:
+  - European: ~1.00 (reference, narrow distribution)
+  - American: ~0.65 (wide distribution, orange)
+  - South Asian: ~0.62 (wide distribution, green)
+  - East Asian: ~0.50 (blue)
+  - African: ~0.20 (lowest, purple, narrow distribution at bottom)
+
+The figure demonstrates that PRS trained predominantly on European GWAS data has substantially reduced predictive accuracy in non-European populations, especially in African ancestry individuals.

@@ -1,0 +1,9 @@
+---
+title: "L7 · Polygenic Risk Scores"
+date: '2026-04-13'
+author: "Hae Kyung Im, PhD"
+description: "BIOS 25328 · Lecture 7"
+categories: [slides]
+---
+
+[Open slide deck](L7-prs-2026.html){.btn .btn-primary .btn-lg}

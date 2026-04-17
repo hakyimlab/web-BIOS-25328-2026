@@ -1,0 +1,12 @@
+Slide titled "The individual-level accuracy for height PGS decreases across the genetic ancestry continuum" (slide 42).
+
+Two panels from Ding et al. 2023 Nature.
+
+Panel a: Six scatter plots, one per ancestry group (EA = European American, HL = Hispanic Latino, SAA = South Asian American, EAA = East Asian American, AA = African American, Unclassified). Each plot shows individual-level accuracy (r², y-axis: 0.2 to 0.8) vs genetic distance (GD) from training population (x-axis: 0 to 0.8). Each group shows a strong negative correlation with R values around -0.84 to -0.88 and r² ranges that decrease as GD increases (e.g., EA: r² = 0.76-0.38d; AA: r² = 0.79-0.78d).
+
+Panel b: Combined scatter plot of all individuals across ancestry groups (colored by GIA: EA, HL, SAA, EAA, AA, Unclassified). Overall regression line shows:
+  R = -0.96, P < 10^-10, r² = 0.8 - 0.72d
+
+Demonstrates a universal linear decay of height PGS accuracy with genetic distance from the (European) training population.
+
+Source: Ding et al 2023 Nature. https://www.nature.com/articles/s41586-023-06079-4

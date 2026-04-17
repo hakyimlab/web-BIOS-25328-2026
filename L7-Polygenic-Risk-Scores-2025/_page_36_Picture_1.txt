@@ -1,0 +1,3 @@
+Nature Genetics journal header banner for a Perspective article.
+
+Dark green background with white text: "PERSPECTIVE" on the left, DOI "https://doi.org/10.1038/s41588-019-0379-x" below it. On the right, the Nature Genetics logo in white text on a white-bordered green box: "nature genetics".

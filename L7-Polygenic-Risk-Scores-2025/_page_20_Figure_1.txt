@@ -1,0 +1,11 @@
+Slide diagram illustrating Elastic Net as a type of penalized regression that combines LASSO and Ridge penalties.
+
+Left side shows the prediction formula:
+  Y = sum_{k=1}^{M} beta_k^E-N * X_k
+
+Right side shows a flowchart: "Penalized regression" box with two arrows pointing down to "LASSO" and "Elastic Net" boxes.
+
+Below: the Elastic Net loss function:
+  ||Y - sum_k X_k * beta_k||_2 + lambda_1 * ||beta||_1 + lambda_2 * ||beta_2||_2
+
+The lambda_1 term (L1 penalty) induces sparsity (LASSO), while lambda_2 (L2 penalty) adds Ridge-style shrinkage.

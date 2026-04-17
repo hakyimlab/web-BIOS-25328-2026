@@ -1,0 +1,11 @@
+Slide diagram illustrating Ridge regression as a type of penalized regression.
+
+Left side shows the prediction formula:
+  Y = sum_{k=1}^{M} beta_k^Ridge * X_k
+
+Right side shows a flowchart: "Penalized regression" box (dark teal) with an arrow pointing down to "Ridge" box.
+
+Below: the Ridge loss function:
+  ||Y - sum_k X_k * beta_k||_2 + lambda_2 * ||beta_2||_2
+
+Slide number: 20.

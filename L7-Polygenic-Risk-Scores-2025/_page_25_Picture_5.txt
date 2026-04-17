@@ -1,0 +1,1 @@
+Small generic PDF file icon. A placeholder thumbnail indicating a PDF document, with no readable content visible.

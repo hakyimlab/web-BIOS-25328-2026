@@ -1,0 +1,6 @@
+Cell journal citation header. Black text on white background:
+
+"Cell"
+"Volume 179, Issue 6, 27 November 2019, Pages 1424-1435.e8"
+
+Indicates a reference to a Cell journal article used in the lecture slides.

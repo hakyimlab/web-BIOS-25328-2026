@@ -1,0 +1,11 @@
+Slide titled "Effect on Schizophrenia Risk Selection" (slide 48).
+
+Infographic comparing three groups of 100 people (represented as colored human icons):
+
+1. "100 People random from population" — baseline schizophrenia prevalence
+2. "100 People from top 10% of PRS" — 1.4-fold enrichment
+3. "100 People from top 1% of PRS" — 6.4-fold enrichment
+
+Caption: "Current: PRS explain ~11% of liability; AUC: 0.74"
+
+The figure illustrates that even selecting the top 1% of PRS yields a 6.4-fold enrichment for schizophrenia risk, but current PRS still explains only ~11% of liability, limiting the practical utility of polygenic embryo screening for this trait.

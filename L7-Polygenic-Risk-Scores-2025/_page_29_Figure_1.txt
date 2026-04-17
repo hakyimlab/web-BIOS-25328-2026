@@ -1,0 +1,7 @@
+Scatter plot showing predicted height (x-axis, in cm) vs actual height (y-axis, in cm) for 2,000 individuals.
+
+Points are colored by sex: blue circles = Males, red circles = Females. The two clouds are clearly separated, with males clustered at higher heights (~165-195 cm) and females at lower heights (~148-178 cm). Both groups show a positive linear relationship between predicted and actual height.
+
+Vertical error bars are shown at intervals along the fitted regression lines for each sex group, indicating variance in actual height within predicted height bins.
+
+The plot demonstrates that polygenic risk score-based height prediction is reasonably accurate and sex-stratified.

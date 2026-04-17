@@ -1,0 +1,13 @@
+Slide titled "Embryo Selection Active Area of Research" (slide 46).
+
+Screenshot of an eLife journal article page:
+
+Title: "Utility of polygenic embryo screening for disease depends on the selection strategy"
+
+Authors: Todd Lencz, Daniel Backenroth, Einat Granot-Hershkovitz, Adam Green, Kyle Gettler, Judy H Cho, Omer Weissbrod, Or Zuk, Shai Carmi
+
+Institutional affiliations include: Zucker School of Medicine at Hofstra/Northwell, The Zucker Hillside Hospital Division of Northwell Health, The Feinstein Institutes for Medical Research, Braun School of Public Health (Hebrew University of Jerusalem), Icahn School of Medicine at Mount Sinai, Harvard T.H. Chan School of Public Health, Hebrew University of Jerusalem.
+
+Published as a Research Article on Oct 12, 2021 in eLife (Genetics and Genomics section).
+
+Context: This article examines the utility and limitations of using polygenic risk scores for selecting embryos during IVF, a controversial application of PRS in reproductive medicine.

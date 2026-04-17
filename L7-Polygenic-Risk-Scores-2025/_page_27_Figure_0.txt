@@ -1,0 +1,11 @@
+Slide titled "DNA Sequencing to Gene Expression" (slide 28).
+
+Left panel: Architecture diagram of the Enformer deep learning model. Input is DNA sequence with a receptive field of 20 kb (expandable to 100 kb). Architecture consists of convolutional layers (7x) followed by transformer layers (11x) with key/query attention, and organism-specific output heads for Human (5,313 genomic tracks) and Mouse (1,843 tracks). Compared against the Basenji2 model.
+
+Right panel: Highlighted callout box stating:
+  "This model has 250 million parameters"
+  "chatGPT has 170 billion, scale makes a huge difference"
+
+Right side also shows example output genomic tracks (blue peak-style signal plots).
+
+Source: https://www.nature.com/articles/s41592-021-01252-x

@@ -1,0 +1,12 @@
+Slide titled "PRS + Family History Improves Risk Prediction" (slide 35).
+
+Four-panel figure showing predicted 5-year absolute cancer risk trajectories by age (x-axis: 40-70 years), stratified by PRS level (high/average/low) and family history (yes/no). Lines are colored in shades of red/pink (high PRS) to blue/gray (low PRS), with solid lines for family history present and dashed lines for absent.
+
+Panel a: Prostate cancer (4740 cases) — P < 4.5e-57
+Panel b: Breast cancer (4760 cases) — P < 4.9e-35
+Panel c: Colorectal cancer (2705 cases) — P < 2.2e-27
+Panel d: Lung cancer (1541 cases) — P < 0.591 (non-significant)
+
+Caption: "Predicted 5-year absolute risk trajectories across strata defined by family history and percentiles of the polygenic risk score (PRS) distribution."
+
+Source: Kachuri L, Graff RE, Smith-Byrne K et al. Pan-cancer analysis demonstrates that integrating polygenic risk scores with modifiable risk factors improves risk prediction. Nat Commun 11, 6084 (2020). https://doi.org/10.1038/s41467-020-19600-4

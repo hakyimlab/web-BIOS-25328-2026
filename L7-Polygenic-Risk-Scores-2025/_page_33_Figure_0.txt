@@ -1,0 +1,10 @@
+Slide titled "Breast Cancer: PRS is Predictive of Risk" (slide 34).
+
+Panel A: Line plot for overall breast cancer risk.
+  - X-axis: PRS percentile bins (<1%, 1-5%, 5-10%, 10-20%, 20-40%, 40-60%, 60-80%, 80-90%, 90-95%, 95-99%, >99%)
+  - Y-axis: Odds ratio (log scale), ranging from ~0.1 to ~5
+  - Two overlapping lines (solid and dashed, nearly identical) show a monotonically increasing odds ratio from ~0.3 at the lowest PRS to ~3-4 at the highest PRS percentile.
+
+The reference (OR = 1) corresponds to the 40-60% bin. The result shows that individuals in the top 1% of PRS have ~3-4x higher odds of breast cancer compared to average.
+
+Source: Mavaddat N et al. "Polygenic Risk Scores for Prediction of Breast Cancer and Breast Cancer Subtypes." Am J Hum Genet. 2019 Jan 3;104(1):21-34. PMC6323553.

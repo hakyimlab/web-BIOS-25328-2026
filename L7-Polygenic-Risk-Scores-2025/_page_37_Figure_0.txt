@@ -1,0 +1,18 @@
+Slide titled "Ancestry Composition of Current GWAS" (slide 38).
+
+Top panel: Stacked area chart showing the cumulative number of individuals (in millions) in GWAS studies from 2006 to the present, broken down by ancestry:
+  - European (red, dominant)
+  - East Asian (small slice)
+  - South Asian/other Asian
+  - African
+  - Hispanic/Latino
+  - Greater Middle Eastern
+  - Oceanic, Other, Multiple (very small)
+
+A right-side bar shows global population proportions for comparison, illustrating the stark underrepresentation of African, Asian, and other non-European populations in GWAS relative to their share of the global population.
+
+Bottom panel: Fraction (0 to 1.00) of GWAS participants by ancestry over time, confirming European ancestry accounts for ~75%+ throughout.
+
+Caption: "Fig. 1 | Ancestry of GWAS participants over time, as compared with the global population. Cumulative data, as reported by the GWAS catalog. Individuals whose ancestry is 'not reported' are not shown."
+
+Source: Martin et al 2019 Nature Genetics. https://www.nature.com/articles/s41588-019-0379-x
