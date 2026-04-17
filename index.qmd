@@ -6,7 +6,9 @@ listing:
     - "post/*.qmd"
     - "post/**/*.qmd"
   sort: "date asc"
-  type: default
+  type: table
+  fields: [date, title, categories]
+  date-format: "MMM D, YYYY"
   categories: true
   sort-ui: false
   filter-ui: false

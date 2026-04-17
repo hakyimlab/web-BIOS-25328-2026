@@ -2,9 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
-      "/archive/L3-Cancer-GWAS-QC-UKBiobank-2025/page-L3-Cancer-GWAS-QC-UKBiobank-2025.html",
-      "/archive/L6-Mixed-Effects-Models-LDSC-2025/page-L6-Mixed-Effects-Models-LDSC-2025.html",
-      "/archive/L4-Multiple-Testing-Correction-2025/page-L4-Multiple-Testing-Correction-2025.html",
+      "/L4-Multiple-Testing-Correction-2025/page-L4-Multiple-Testing-Correction-2025.html",
       "/L5-Population-Structure-PCA-2026/page-L5-Population-Structure-PCA-2026.html",
       "/L6-beyond-pcs/page-L6-beyond-pcs.html",
       "/post/homework-03.html",

@@ -3,7 +3,6 @@ title: homework 3
 author: Haky Im
 date: 2026-04-10
 categories:
-  - bios25328
   - homework
 format:
   html:
