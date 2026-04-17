@@ -1,0 +1,64 @@
+---
+title: homework 4 - polygenic risk scores
+author: Haky Im
+date: 2026-04-17
+categories:
+  - bios25328
+  - homework
+format:
+  html:
+    toc: true
+    code-fold: false
+    code-summary: "Show the code"
+    code-tools: true
+    code-overflow: wrap
+date-modified: last-modified
+eval: false
+---
+
+## A. Complete the following assessments
+- [Lecture 6 assessment quiz](https://forms.gle/2FazW6RRTqqfVgY59)   (10 points)
+- [Lecture 7 assessment quiz](https://forms.gle/nDuJCpRxaP4p7eot8) (10 points)
+
+::: {.callout-important}
+## Before you start: download the lab data
+
+Download the lab data from [Box](https://uchicago.box.com/s/snhot2x0272dzuuas4ipkgnrlxva2qga) and place it in a folder called `Lab-personal-genomes-project-data` inside your project directory. See [Lab 04](2026-04-17-lab-04/index.qmd) for full setup instructions.
+:::
+
+## B. Finish the knit lab 4 (70 points)
+
+In this section, you will complete the practical implementation of polygenic risk scoring using PRSice software as done in Lab 04. As a reminder, it involves:
+
+1. Setting up the environment and downloading necessary data:
+   - Download and install PRSice software
+   - Set up the Personal Genome Project data
+   - Install required R packages (tidyverse, RSQLite, glue)
+
+2. Data exploration and preparation:
+   - Explore the phenotype database
+   - Analyze demographic distributions
+   - Create phenotype data files for analysis
+
+3. Running PRSice analysis:
+   - Compute polygenic risk scores for height
+   - Use UK Biobank height GWAS results as the base data
+   - Apply various p-value thresholds for score calculation
+
+4. Results analysis and visualization:
+   - Plot observed versus predicted height values
+   - Perform regression analysis to assess prediction accuracy
+   - Interpret the results in the context of polygenic prediction
+
+The lab will help you understand:
+- The practical implementation of PRS calculations
+- The relationship between GWAS results and phenotype prediction
+- The challenges and limitations of polygenic risk scoring
+- The interpretation of PRS results in real-world data
+
+Make sure to document your code, results, and interpretations clearly in your knitted document. The grading will focus on:
+- Correct implementation of the analysis pipeline
+- Quality of data visualization
+- Clarity of interpretation
+- Proper documentation of the process
+

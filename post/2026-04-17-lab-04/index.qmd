@@ -1,0 +1,252 @@
+---
+title: "lab 4"
+author: "Liz Gibbons"
+date: "2026-04-17"
+output: html_document
+eval: false
+categories:
+  - lab
+  - bios25328
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+::: {.callout-important}
+## Before you start: download the lab data
+
+Download the lab data from [Box](https://uchicago.box.com/s/snhot2x0272dzuuas4ipkgnrlxva2qga) and place it in a folder called `Lab-personal-genomes-project-data` inside your project directory. The folder must contain:
+
+- `repgp-data.sqlite3`
+- `repgp.fam`
+- `repgp.chr1` … `repgp.chr22` (plink genotype files)
+- `ukb_height.gz` (GWAS summary statistics)
+
+Then set the `DATA` path in the R chunk below before running any code.
+:::
+
+```{r set-paths, eval=FALSE}
+DATA <- "Lab-personal-genomes-project-data"  # relative to your project root; adjust if needed
+```
+
+## Goals and Introduction
+
+In this lab we are going to use the PRSice software to take height GWAS results and predict height of the Personal Genome Project individuals using their genotype data.
+
+### Goals
+
+-   Download data from box
+-   Download PRSice
+-   Run exploratory analysis of data
+-   Run PRSice
+-   Plot observed versus predicted for height
+
+## Setup
+
+### load R packages and define paths
+
+You will have to install all these packages first:
+
+(r code block)
+```{r, eval = F}
+install.packages("tidyverse")
+install.packages("RSQLite")
+install.packages("glue")
+```
+
+(r code block)
+```{r, eval = F}
+suppressMessages(library(tidyverse))
+suppressMessages(library(RSQLite))
+suppressMessages(library(glue))
+```
+
+### Download data
+
+-   download the data from [Box](https://uchicago.box.com/s/snhot2x0272dzuuas4ipkgnrlxva2qga) and place it in a directory called `Lab-personal-genomes-project-data`
+-   download PRSice software from <https://choishingwan.github.io/PRSice/>
+
+If you are on a Mac install the mac appropriate binary:
+
+(bash code block)
+```{bash, eval=FALSE}
+# wget https://github.com/choishingwan/PRSice/releases/download/2.3.5/PRSice_mac.zip
+```
+
+If you are on Posit cloud do the linux binary:
+
+(bash code block)
+```{bash, eval=FALSE}
+wget https://github.com/choishingwan/PRSice/releases/download/2.3.5/PRSice_linux.zip
+```
+
+Unzip the binary:
+(bash code block)
+```{bash, eval=FALSE}
+unzip ./PRSice_linux.zip
+```
+
+move the executable to the directory where you keep your software (optional) \*\* the first time you run PRSice, it will install additional components make sure PRSice is executable \*\* chmod u+x PRSice
+
+(bash code block)
+```{bash, eval = F}
+chmod +x ./PRSice_linux
+```
+
+Terminal Setup
+
+(bash code block)
+```{bash, eval = F}
+export PRE="/cloud/project"          # change to your project root if not on Posit Cloud
+export DATA="$PRE/Lab-personal-genomes-project-data"
+export WORK=$DATA
+
+export PRSice="$PRE"                 # directory containing PRSice.R and the binary
+export PRSice_os="PRSice_linux"      # use PRSice_mac on a Mac
+```
+
+## Exploration of the Data
+
+### open the database with phenotype information and list tables
+
+(r code block)
+```{r, eval = F}
+dbname <- paste0(DATA,"/repgp-data.sqlite3") ##This is just to create the file path to the sqlite3 file 
+## connect to db
+db = RSQLite::dbConnect(SQLite(), dbname)
+## list tables
+dbListTables(db)
+```
+
+query database users table
+
+(r code block)
+```{r, eval = F}
+dbListFields(db,"users")
+```
+
+(r code block)
+```{r, eval = F}
+query <- function(...) dbGetQuery(db, ...)
+users = query("select * from users")
+names(users)
+```
+
+look at distribution by count for each column
+
+(r code block)
+```{r, eval = F}
+users %>% count(race)
+```
+
+(r code block)
+```{r, eval = F}
+users  %>% count(gender)
+```
+
+(r code block)
+```{r, eval = F}
+users %>% count(blood)
+```
+
+plot height distribution by gender
+
+(r code block)
+```{r, eval = F}
+users %>% ggplot(aes(height,fill=gender)) + geom_density(alpha=0.6) + ggtitle("Height by gender - Missing gender, *, has bi-modal distr.") + theme_minimal(base_size = 15)
+```
+
+## run PRSice
+
+### create phenotype data file
+
+create phenotype data file as intersection of the plink formatted fam file and the users table from the database repgp-data.sqlite3
+
+(r code block)
+```{r, eval = F}
+fam = read_tsv(glue::glue("{DATA}/repgp.fam"),col_names = FALSE)
+```
+
+(r code block)
+```{r, eval = F}
+names(fam)[1:2] = c("FID","IID")
+fam <- fam %>% select(FID, IID) %>% inner_join(users %>% select(sample,height,weight,gender), by=c("IID"="sample")) 
+write_tsv(fam,file=glue::glue("{DATA}/phenodata.txt"))
+```
+
+execute bash command to run PRSice
+
+(bash code block)
+```{bash, eval = F}
+mkdir /cloud/project/Lab-personal-genomes-project-data/output
+
+Rscript /cloud/project/PRSice.R --dir /cloud/project \
+    --prsice /cloud/project/PRSice_linux \
+    --base /cloud/project/Lab-personal-genomes-project-data/ukb_height.gz \
+    --target cloud/project/Lab-personal-genomes-project-data/repgp.chr# \
+    --snp variant_id \
+    --A1 effect_allele \
+    --A2 non_effect_allele \
+    --stat effect_size \
+    --beta \
+    --pvalue pvalue \
+    --pheno-file /cloud/project/Lab-personal-genomes-project-data/phenodata.txt \
+    --pheno-col height \
+    --bar-levels 5e-08,5e-07,5e-06,5e-05,5e-04,5e-03,5e-02,5e-01,1 \
+    --fastscore \
+    --binary-target F \
+    --thread 2 \
+    --out /cloud/project/Lab-personal-genomes-project-data/output/height_score_all
+```
+
+If you get duplicated SNP ID, follow the instructions
+
+(bash code block)
+```{bash, eval = F}
+PRSice="/cloud/project/"
+WORK="/cloud/project/Lab-personal-genomes-project-data/"
+
+Rscript $PRSice/PRSice.R --dir $PRSice \
+    --prsice $PRSice/PRSice_mac \
+    --base $WORK/ukb_height.gz \
+    --extract $WORK/output/height_score_all.valid \
+    --target $WORK/repgp.chr# \
+    --snp variant_id \
+    --A1 effect_allele \
+    --A2 non_effect_allele \
+    --stat effect_size \
+    --beta \
+    --pvalue pvalue \
+    --pheno-file $WORK/phenodata.txt \
+    --pheno-col height \
+    --bar-levels 5e-08,5e-07,5e-06,5e-05,5e-04,5e-03,5e-02,5e-01,1 \
+    --fastscore \
+    --binary-target F \
+    --thread 2 \
+    --out $WORK/output/height_score_all
+```
+
+This may take a couple minutes
+
+plot observed vs predicted height
+
+(r code block)
+```{r, eval = F}
+## we already have the phenotype data in the fam variable
+predicted_height = read_delim(glue::glue("{DATA}/output/height_score_all.best"),delim=" ")
+```
+
+(r code block)
+```{r, eval = F}
+combined <- predicted_height %>% inner_join(fam,by=c("IID"="IID")) 
+combined %>% ggplot(aes(PRS,height)) + geom_point() + theme_minimal(base_size = 15)
+```
+
+regress observed height with predicted height (PRS)
+
+(r code block)
+```{r, eval = F}
+summary(lm(height ~ PRS,data=combined)) %>% coef() 
+```
+

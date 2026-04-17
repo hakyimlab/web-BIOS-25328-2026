@@ -7,11 +7,18 @@ set -e
 echo "=== Generating slide stub pages ==="
 python3 scripts/generate-slide-stubs.py
 
-# 1. Render the website (index + stub pages — excludes slide QMDs via _quarto.yml)
+# 1. Remove stale HTML artifacts from source directories
+# (quarto render copies any .html it finds in L*/ to docs/, so old renamed files pollute output)
+echo "=== Cleaning stale HTML from source dirs ==="
+find L* -name "*.html" \
+  -not -name "speaker-view.html" \
+  -delete 2>/dev/null || true
+
+# 2. Render the website (index + stub pages — excludes slide QMDs via _quarto.yml)
 echo "=== Rendering site ==="
 quarto render
 
-# 2. Render each slide deck and copy output to docs/
+# 3. Render each slide deck and copy output to docs/
 for slide in L*/*.qmd; do
   # Skip stub pages (generated above)
   [[ "$(basename "$slide")" == page-* ]] && continue
