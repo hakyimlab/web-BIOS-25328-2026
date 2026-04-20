@@ -75,7 +75,7 @@ Regulatory variants alter transcript levels or splicing, which changes protein a
 ![](L9-Post-GWAS-MR-2026/_page_5_Figure_1.jpeg){height=75%}
 
 ::: {.source-credit}
-[CC BY-SA 4.0](https://commons.wikimedia.org/w/index.php?title=File:Splicesome.pdf)
+https://commons.wikimedia.org/w/index.php?title=File:Splicesome.pdf
 :::
 
 ::: {.notes}
