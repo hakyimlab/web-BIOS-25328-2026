@@ -68,7 +68,7 @@ for slide in L*/*.qmd; do
   echo "  -> copied to $dest/"
 done
 
-# Copy custom.css to docs/ root (slides link to it as ../custom.css)
+# Copy custom.css to docs/ root as well
 [ -f "custom.css" ] && cp "custom.css" "docs/"
 
 echo "=== Done ==="

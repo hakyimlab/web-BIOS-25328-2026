@@ -7,7 +7,7 @@ date-modified: last-modified
 format:
   revealjs:
     theme: default
-    css: custom.css
+    css: ../custom.css
     slide-number: true
     chalkboard: false
     smaller: true

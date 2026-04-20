@@ -7,7 +7,7 @@ date-modified: last-modified
 format:
   revealjs:
     theme: default
-    css: custom.css
+    css: ../custom.css
     slide-number: true
     chalkboard: false
     smaller: true
@@ -139,14 +139,7 @@ The naive approach is simple and often used informally. It assumes the top GWAS 
 
 ## GTEx Shows eQTL and sQTL Evidence
 
-:::: {.columns}
-::: {.column width="55%"}
 ![](L9-Post-GWAS-MR-2026/_page_11_Figure_0.jpeg)
-:::
-::: {.column width="45%"}
-eQTL violin plot and sQTL results for chr16_53769662 — the FTO locus actually points to *IRX3*, not *FTO*
-:::
-::::
 
 ::: {.notes}
 The famous FTO locus example: rs1558902 is a top BMI GWAS hit near the FTO gene. But careful eQTL analysis pointed to IRX3 as the regulated gene. This is a textbook example of naive approach failure.
