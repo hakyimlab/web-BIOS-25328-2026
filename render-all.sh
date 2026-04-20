@@ -44,7 +44,10 @@ for slide in L*/*.qmd; do
     cp -r "$dir/${base}_files" "$dest/"
   fi
 
-
+  # Copy same-name image subdirectory (e.g. L9-Post-GWAS-MR-2026/)
+  if [ -d "$dir/$base" ]; then
+    cp -r "$dir/$base" "$dest/"
+  fi
 
   # Copy images/ subdirectory if present (e.g. L5 stores images there)
   if [ -d "$dir/images" ]; then
