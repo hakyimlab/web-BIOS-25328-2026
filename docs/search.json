@@ -21,6 +21,13 @@
     "text": "Open slide deck\n\n\n\n© HakyImLab and Listed Authors - CC BY 4.0 License"
   },
   {
+    "objectID": "L3-Cancer-GWAS-QC-UKBiobank-2025/page-L3-Cancer-GWAS-QC-UKBiobank-2025.html",
+    "href": "L3-Cancer-GWAS-QC-UKBiobank-2025/page-L3-Cancer-GWAS-QC-UKBiobank-2025.html",
+    "title": "L3 · NEED EDITING Lecture 3: GWAS, QC & UK Biobank",
+    "section": "",
+    "text": "Open slide deck\n\n\n\n© HakyImLab and Listed Authors - CC BY 4.0 License"
+  },
+  {
     "objectID": "post/2026-04-17-lab-04/index.html",
     "href": "post/2026-04-17-lab-04/index.html",
     "title": "lab 4",
@@ -81,7 +88,7 @@
     "href": "index.html",
     "title": "BIOS 25328",
     "section": "",
-    "text": "Course material for BIOS 25328 — Genomics and Bioinformatics (Hae Kyung Im).\n\n\n\n\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nCategories\n\n\n\n\n\n\n\n\nApr 1, 2026\n\n\nL4 · Lecture 4: Multiple Testing Correction\n\n\nslides\n\n\n\n\n\n\nApr 6, 2026\n\n\nL5 · Principal Component Analysis and Population Structure\n\n\nslides\n\n\n\n\n\n\nApr 8, 2026\n\n\nL6 · Beyond PCs: Mixed Effects Models & LD Score Regression\n\n\nslides\n\n\n\n\n\n\nApr 10, 2026\n\n\nhomework 3\n\n\nhomework\n\n\n\n\n\n\nApr 13, 2026\n\n\nL7 · Polygenic Risk Scores\n\n\nslides\n\n\n\n\n\n\nApr 15, 2026\n\n\nL8 · eQTL Analysis, Fine-Mapping, and Heritability Enrichment\n\n\nslides\n\n\n\n\n\n\nApr 17, 2026\n\n\nhomework 4 - polygenic risk scores\n\n\nhomework\n\n\n\n\n\n\nApr 17, 2026\n\n\nlab 4\n\n\nlab\n\n\n\n\n\n\nApr 20, 2026\n\n\nL9 · Gene Level Association Tests and Mendelian Randomization\n\n\nslides\n\n\n\n\n\n\nNo matching items\n© HakyImLab and Listed Authors - CC BY 4.0 License"
+    "text": "Course material for BIOS 25328 — Genomics and Bioinformatics (Hae Kyung Im).\n\n\n\n\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nCategories\n\n\n\n\n\n\n\n\nMar 31, 2025\n\n\nL3 · NEED EDITING Lecture 3: GWAS, QC & UK Biobank\n\n\nslides\n\n\n\n\n\n\nMar 25, 2026\n\n\nL2 · NEED EDITING Lecture 2: Dissection of Genetics & Prediction of Cancer Risk\n\n\nslides\n\n\n\n\n\n\nApr 1, 2026\n\n\nL4 · Lecture 4: Multiple Testing Correction\n\n\nslides\n\n\n\n\n\n\nApr 6, 2026\n\n\nL5 · Principal Component Analysis and Population Structure\n\n\nslides\n\n\n\n\n\n\nApr 8, 2026\n\n\nL6 · Beyond PCs: Mixed Effects Models & LD Score Regression\n\n\nslides\n\n\n\n\n\n\nApr 10, 2026\n\n\nhomework 3\n\n\nhomework\n\n\n\n\n\n\nApr 13, 2026\n\n\nL7 · Polygenic Risk Scores\n\n\nslides\n\n\n\n\n\n\nApr 15, 2026\n\n\nL8 · eQTL Analysis, Fine-Mapping, and Heritability Enrichment\n\n\nslides\n\n\n\n\n\n\nApr 17, 2026\n\n\nhomework 4 - polygenic risk scores\n\n\nhomework\n\n\n\n\n\n\nApr 17, 2026\n\n\nlab 4\n\n\nlab\n\n\n\n\n\n\nApr 20, 2026\n\n\nL9 · Gene Level Association Tests and Mendelian Randomization\n\n\nslides\n\n\n\n\n\n\nNo matching items\n© HakyImLab and Listed Authors - CC BY 4.0 License"
   },
   {
     "objectID": "post/homework-04.html",
@@ -103,6 +110,13 @@
     "title": "homework 4 - polygenic risk scores",
     "section": "B. Finish the knit lab 4 (70 points)",
     "text": "B. Finish the knit lab 4 (70 points)\nIn this section, you will complete the practical implementation of polygenic risk scoring using PRSice software as done in Lab 04. As a reminder, it involves:\n\nSetting up the environment and downloading necessary data:\n\nDownload and install PRSice software\nSet up the Personal Genome Project data\nInstall required R packages (tidyverse, RSQLite, glue)\n\nData exploration and preparation:\n\nExplore the phenotype database\nAnalyze demographic distributions\nCreate phenotype data files for analysis\n\nRunning PRSice analysis:\n\nCompute polygenic risk scores for height\nUse UK Biobank height GWAS results as the base data\nApply various p-value thresholds for score calculation\n\nResults analysis and visualization:\n\nPlot observed versus predicted height values\nPerform regression analysis to assess prediction accuracy\nInterpret the results in the context of polygenic prediction\n\n\nThe lab will help you understand: - The practical implementation of PRS calculations - The relationship between GWAS results and phenotype prediction - The challenges and limitations of polygenic risk scoring - The interpretation of PRS results in real-world data\nMake sure to document your code, results, and interpretations clearly in your knitted document. The grading will focus on: - Correct implementation of the analysis pipeline - Quality of data visualization - Clarity of interpretation - Proper documentation of the process"
+  },
+  {
+    "objectID": "L2-Cancer-GWAS copy/page-L2-Cancer-GWAS.html",
+    "href": "L2-Cancer-GWAS copy/page-L2-Cancer-GWAS.html",
+    "title": "L2 · NEED EDITING Lecture 2: Dissection of Genetics & Prediction of Cancer Risk",
+    "section": "",
+    "text": "Open slide deck\n\n\n\n© HakyImLab and Listed Authors - CC BY 4.0 License"
   },
   {
     "objectID": "L4-Multiple-Testing-Correction-2025/page-L4-Multiple-Testing-Correction-2025.html",

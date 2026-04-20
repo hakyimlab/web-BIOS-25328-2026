@@ -1,5 +1,5 @@
 ---
-title: "Lecture 3: GWAS, QC & UK Biobank"
+title: "NEED EDITING Lecture 3: GWAS, QC & UK Biobank"
 author: "Hae Kyung Im, PhD"
 date: "March 31, 2025"
 draft: true
@@ -11,7 +11,18 @@ format:
     chalkboard: false
     smaller: true
     scrollable: false
+    footer: "⚠️ DRAFT — NEEDS EDITING BEFORE USE"
 ---
+
+## {background-color="#b30000"}
+
+::: {style="color: white; font-size: 1.8em; text-align: center; margin-top: 1em;"}
+⚠️ DRAFT SLIDES — NEEDS EDITING
+:::
+
+::: {style="color: #ffcccc; font-size: 1em; text-align: center; margin-top: 1em;"}
+These slides were auto-generated from the extracted PDF and have not been reviewed or edited. Do not use as-is.
+:::
 
 ## Lecture 3: GWAS, QC & UK Biobank {.center}
 

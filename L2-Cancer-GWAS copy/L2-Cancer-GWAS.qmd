@@ -1,0 +1,380 @@
+---
+title: "NEED EDITING Lecture 2: Dissection of Genetics & Prediction of Cancer Risk"
+author: "Hae Kyung Im, PhD"
+date: "March 25, 2026"
+draft: true
+format:
+  revealjs:
+    theme: default
+    css: ../custom.css
+    slide-number: true
+    chalkboard: false
+    smaller: true
+    scrollable: false
+    footer: "⚠️ DRAFT — NEEDS EDITING BEFORE USE"
+---
+
+## {background-color="#b30000"}
+
+::: {style="color: white; font-size: 1.8em; text-align: center; margin-top: 1em;"}
+⚠️ DRAFT SLIDES — NEEDS EDITING
+:::
+
+::: {style="color: #ffcccc; font-size: 1em; text-align: center; margin-top: 1em;"}
+These slides were auto-generated from the extracted PDF and have not been reviewed or edited. Do not use as-is.
+:::
+
+## Dissection of Genetics & Prediction of Cancer Risk {.center}
+
+**Hae Kyung Im, PhD**
+
+March 25, 2026
+
+![](_page_0_Picture_2.jpeg){width=60%}
+
+## Goals of the Class
+
+- Learn key concepts and tools to understand the current literature in cancer genomics and interpret the results
+- We will focus on germline risk factors in the first half of the course
+
+**Today:**
+
+- Gene mapping: Linkage vs. association approaches
+- Genetic architecture of cancer risk
+- Overview and discussion of Genome-wide Association Studies (GWAS)
+
+## Introductions
+
+- Name, graduation year
+- Why you are taking this class?
+- Your favorite dish (or restaurant)
+
+# Linkage Analysis
+
+## Linkage Analysis
+
+- Gene mapping method popular before development of high throughput genotyping techniques
+- 100's of markers interrogated (causal markers most likely missed)
+- Important genes were found with this approach:
+  - **CFTR**: Cystic Fibrosis
+  - **HTT**: Huntington disease
+  - **NOD2**: Inflammatory bowel disease
+- Markers co-transmitted (recombination rate < 0.5) with the disease susceptibility locus (DSL) help locate the DSL
+- Uses families with many cases ("loaded pedigrees")
+
+::: {.notes}
+Before the Human Genome Project, disease genes were discovered using linkage analysis. The technology of the time allowed measuring variation in about 100 loci across the genome. Many important genes were discovered with this approach. Linkage analysis is based on co-transmission of genetic markers and disease genes from parent to child. Advantages: a few hundred markers could cover the whole genome. Downside: low resolution and recruiting large families is harder than a large unrelated cohort.
+:::
+
+## High Penetrance Cancer Susceptibility Genes
+
+- Genetic linkage (1980s–1990s) found:
+  - Breast and ovarian cancers: **BRCA1**, **BRCA2**
+  - Colorectal cancer: **APC**, **MLH1**, **MSH2**
+  - Melanoma: **CDKN2A**
+- To date, >70 cancer susceptibility genes (CSGs) with relative risks (RR) of 5–100
+
+::: {.source-credit}
+Sud et al 2017 NRC
+:::
+
+::: {.notes}
+Many high penetrance (large effect) cancer susceptibility genes were found using linkage analysis.
+:::
+
+![](_page_5_Figure_0.jpeg)
+
+::: {.notes}
+By the mid-1990s, discoveries using linkage were dwindling, prompting Risch and Merikangas to propose genome-wide association studies — genotyping ~100K loci — considered science fiction at the time. This added urgency to completing the Human Genome Project.
+:::
+
+## The Human Genome Project
+
+![](_page_6_Picture_0.jpeg)
+
+::: {.notes}
+The first draft of the human genome was announced by President Bill Clinton, who compared it to the moon landing. Technological advances from the HGP made GWAS possible.
+:::
+
+## Gene Mapping Methods
+
+:::: {.columns}
+::: {.column width="50%"}
+**Linkage analysis**
+
+- Popular before high throughput technology
+- Based on co-transmission of genetic markers and disease genes
+- A few hundred markers can cover the whole genome
+- Low resolution
+- Pedigree/family based
+:::
+::: {.column width="50%"}
+**Association mapping**
+
+- Need a large number of markers (> 1 million)
+- Genetic markers in **LD (Linkage Disequilibrium)** with disease genes
+- Higher resolution
+- Families not needed (easier to recruit large cohorts)
+:::
+::::
+
+![](_page_7_Picture_7.jpeg)
+
+::: {.notes}
+Association methods are based on LD between genetic markers and disease genes. For common variants (MAF > 5%), about 1 million SNPs can tag most common variants. So even if the causal variant isn't measured but is common, a correlated (in LD) SNP can be detected — called tag SNPs or index SNPs.
+:::
+
+# Genetic Architecture of Cancer Risk
+
+## Expected to Find High Penetrance Genes
+
+![](_page_8_Picture_1.jpeg)
+
+::: {.notes}
+Before GWAS, based on what we knew from linkage studies, we expected to find high penetrance (large effect size) genes driving cancer risk.
+:::
+
+## Found Many Low Penetrance Variants
+
+![](_page_9_Picture_1.jpeg)
+
+::: {.notes}
+Instead, GWAS found a large number of variants with modest effect sizes (low penetrance). The genetic architecture of cancer risk turned out to be highly polygenic, requiring better statistical methods to make sense of the discoveries.
+:::
+
+## Found Many Low Penetrance Variants
+
+![](_page_10_Picture_1.jpeg)
+
+**Genetic architecture of most cancer risk is highly polygenic**
+
+![](_page_11_Figure_0.jpeg)
+
+::: {.notes}
+This figure shows that discoverability of risk alleles depends on population frequency. GWAS unlocked many discoveries on the lower left, but turning them into actionable targets requires new statistical concepts.
+
+Low penetrance = low relative risk = small effect size
+:::
+
+# Review: Hypothesis Testing
+
+## Review: Hypothesis Testing
+
+- **H₀**: null hypothesis (e.g., no difference in case-control allele frequencies)
+- **Hₐ**: alternative hypothesis (there is a difference, correlated with causal variant)
+- Test statistic **Z**: in many situations associated to a model
+- Significance level: α = allowed type I error (reject null when null is true)
+- **p-value** = P(observed test statistic more extreme than threshold | H₀)
+
+**We reject H₀ if the observed test statistic is more extreme than what we would expect by chance**
+
+::: {.notes}
+We reject H₀ if the observed test statistic is more extreme than a threshold determined so that the probability of type I error stays below a pre-established significance level α. Usually, if p-values are smaller than the significance level, the null hypothesis is rejected.
+
+Type I error: probability of rejecting the null when the null is true.
+:::
+
+## Review: Hypothesis Testing
+
+![](_page_14_Figure_1.jpeg)
+
+- **α**: type I error — probability of rejecting H₀ when H₀ is true (false positive rate)
+- **β**: type II error — probability of not rejecting H₀ when H₀ is false (false negative rate)
+- **Power** = 1 − β
+
+::: {.notes}
+This figure shows the test statistics under H₀ and Hₐ. The decision rule is to reject H₀ if the test statistic exceeds the threshold. We choose significance level α (typically 0.05) and calculate the threshold. When running multiple tests, a much more stringent significance level is required.
+:::
+
+## P-value
+
+![](_page_15_Figure_1.jpeg)
+
+P-value = P(result as extreme or more extreme than observed | H₀ is true)
+
+::: {.source-credit}
+[Wikipedia: P-value](https://en.wikipedia.org/wiki/P-value)
+:::
+
+## xkcd Take on P-values
+
+![](_page_16_Figure_1.jpeg)
+
+**What's alpha here?**
+
+::: {.source-credit}
+[xkcd 1478](https://xkcd.com/1478/)
+:::
+
+##
+
+![](_page_17_Figure_0.jpeg)
+
+::: {.notes}
+How would you estimate the null distribution of mastectomy rates?
+:::
+
+# Regression Approach: Single SNP
+
+## Regression Approach
+
+$$Y = \mu + a \cdot \text{age} + \beta \cdot X + \epsilon$$
+
+- Parameters β estimated using MLE, least squares, etc.
+- Null hypothesis: β = 0
+- Can handle many types of traits with the same approach
+- Can correct for covariates (age, sex, ancestry)
+- Useful for prediction
+
+Genotype: *aa, aA, AA* → **X₁**: dosage = number of *A* alleles
+
+## Regression Approach: Quantitative Traits
+
+**Quantitative trait** (e.g., height, BMI, systolic blood pressure)
+
+$$Y = \beta_0 + \beta_1 \cdot X_1 + \epsilon, \quad \epsilon \sim N(0, \sigma^2)$$
+
+**Linear Regression**
+
+Genotype: *aa, aA, AA* → **X₁**: dosage = number of *A* alleles
+
+::: {.notes}
+Quantitative traits are modeled with normal errors: mean = β₀ + β₁X₁, where X₁ is the number of minor alleles.
+:::
+
+## Regression Approach: Disease Traits
+
+**Binary trait** (e.g., disease status, hypertension)
+
+$$Y \sim \text{Bernoulli}(\pi)$$
+
+$$\text{logit}(\pi) = \log\!\left(\frac{\pi}{1-\pi}\right) = \beta_0 + \beta_1 X_1$$
+
+**Logistic Regression** — β₁ = log odds ratio
+
+::: {.notes}
+Binary traits are modeled using logistic regression. β₁ is the log odds ratio: for X₁ = 0, log odds = β₀; for X₁ = 1, log odds = β₀ + β₁.
+:::
+
+# Genome-wide Association Studies
+
+## GWAS: Overview
+
+![](_page_24_Figure_0.jpeg)
+
+::: {.notes}
+GWAS collects individuals (cases/controls for disease, or population samples for quantitative traits), measures genotypes at ~1 million markers, and performs association tests between the phenotype and each genetic marker (SNPs).
+:::
+
+## GWAS: Data Structure
+
+![](_page_25_Figure_0.jpeg)
+
+::: {.notes}
+The genotype matrix X and phenotype vector Y. Single-marker SNP association tests produce a table of results: effect size, standard error, and p-values.
+:::
+
+## GWAS: Manhattan Plot
+
+![](_page_26_Figure_0.jpeg)
+
+![](_page_26_Figure_1.jpeg)
+
+**GWAS significance threshold: 5×10⁻⁸**
+
+::: {.source-credit}
+[Ehret 2011, PMC2865585](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2865585/)
+:::
+
+::: {.notes}
+Manhattan plots visualize GWAS results. Points above −log₁₀(5×10⁻⁸) are called GWAS significant.
+:::
+
+## QQPlot
+
+:::: {.columns}
+::: {.column width="55%"}
+- A Q-Q plot is useful to present GWAS results and check for potential issues
+- **X-axis:** expected −log(P) under the null (uniformly distributed p-values)
+- **Y-axis:** observed −log(P)
+- Dots above the 45° line deserve a closer look
+- Can also detect population stratification
+:::
+::: {.column width="45%"}
+![](_page_27_Figure_6.jpeg)
+:::
+::::
+
+::: {.notes}
+In a well-behaved GWAS, most points line up at the identity line, with a few departing at the upper right (true associations). Early departure from the identity line for many points suggests population structure.
+:::
+
+## GWAS SNP-Trait Discovery Timeline
+
+![](_page_28_Figure_1.jpeg)
+
+::: {.notes}
+GWAS have been so successful that thousands have been performed since 2005. As of 2020, more than 70,000 SNP-trait associations are reported in the GWAS Catalog.
+:::
+
+## 100,000+ SNP/Trait Associations
+
+![](_page_29_Figure_1.jpeg)
+
+::: {.source-credit}
+[GWAS Catalog](https://www.ebi.ac.uk/gwas/)
+:::
+
+# WTCCC: First Large Scale GWAS
+
+## WTCCC
+
+- **Wellcome Trust Case Control Consortium**
+- GWAS of 2,000 cases and 3,000 shared controls for 7 diseases
+- Platform: Affymetrix 500K Set
+- Main paper published in 2007
+- Results and summaries freely available; genotype data access granted to qualified investigators
+
+::: {.notes}
+The WTCCC GWAS is a landmark study of 7 common diseases — the first large-scale GWAS performed.
+:::
+
+## WTCCC: Population Structure
+
+![](_page_32_Figure_0.jpeg)
+
+::: {.notes}
+Manhattan plot and QQ plot from WTCCC for association between recruitment site and genotype. Significant peaks on chromosomes 1, 4, 6, and 20 show allele frequency differences across sites — an indication of population structure. We will return to methods for correcting for this later.
+:::
+
+## WTCCC: QQ Plots by Disease
+
+![](_page_33_Figure_0.jpeg)
+
+::: {.notes}
+QQ plots for all 7 WTCCC diseases. Some early departure from the identity line suggests population structure. At the time, methods for correcting for population structure were still underdeveloped.
+:::
+
+## WTCCC: Manhattan Plots
+
+![](_page_34_Figure_0.jpeg)
+
+## WTCCC: Locus Zoom
+
+![](_page_35_Figure_0.jpeg)
+
+::: {.notes}
+Locus zoom plots are staples of any GWAS paper. Variants in LD tend to have similar association p-values. If a single variant is significant by itself, that may be a sign of a genotyping issue.
+:::
+
+# Lab & Homework
+
+## Clarifications and Logistics
+
+- Homework problems are part of the learning process and may cover subjects not discussed in class
+- Don't get stuck — ask classmates, TAs, and instructors
+- Labs can be done on Mac OS or Linux; Windows users may want to create Posit accounts for terminal access
+
+## Lab/Homework
+
+<https://course-material.hakyimlab.org/post/bios-25328/2024-03-18-lab-01-command-line-r/>

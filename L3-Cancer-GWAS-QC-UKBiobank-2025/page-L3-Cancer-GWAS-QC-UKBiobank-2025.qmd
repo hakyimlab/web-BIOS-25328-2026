@@ -1,0 +1,9 @@
+---
+title: "L3 · NEED EDITING Lecture 3: GWAS, QC & UK Biobank"
+date: 'March 31, 2025'
+author: "Hae Kyung Im, PhD"
+description: "Lecture slides"
+categories: [slides]
+---
+
+[Open slide deck](L3-Cancer-GWAS-QC-UKBiobank-2025.html){.btn .btn-primary .btn-lg}

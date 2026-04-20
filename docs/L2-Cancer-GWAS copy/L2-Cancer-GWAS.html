@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="L2-Cancer-GWAS_files/libs/clipboard/clipboard.min.js"></script>
+<script src="L2-Cancer-GWAS_files/libs/quarto-html/tabby.min.js"></script>
+<script src="L2-Cancer-GWAS_files/libs/quarto-html/popper.min.js"></script>
+<script src="L2-Cancer-GWAS_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="L2-Cancer-GWAS_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="L2-Cancer-GWAS_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="L2-Cancer-GWAS_files/libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
+
+  <meta name="author" content="Hae Kyung Im, PhD">
+  <meta name="dcterms.date" content="2026-03-25">
+  <title>NEED EDITING Lecture 2: Dissection of Genetics &amp; Prediction of Cancer Risk</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="L2-Cancer-GWAS_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="L2-Cancer-GWAS_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="L2-Cancer-GWAS_files/libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../custom.css">
+  <link href="L2-Cancer-GWAS_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="L2-Cancer-GWAS_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="L2-Cancer-GWAS_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="L2-Cancer-GWAS_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">NEED EDITING Lecture 2: Dissection of Genetics &amp; Prediction of Cancer Risk</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Hae Kyung Im, PhD 
+</div>
+</div>
+</div>
+
+  <p class="date">2026-03-25</p>
+</section>
+<section id="section" class="slide level2" data-background-color="#b30000">
+<h2></h2>
+<div style="color: white; font-size: 1.8em; text-align: center; margin-top: 1em;">
+<p>⚠️ DRAFT SLIDES — NEEDS EDITING</p>
+</div>
+<div style="color: #ffcccc; font-size: 1em; text-align: center; margin-top: 1em;">
+<p>These slides were auto-generated from the extracted PDF and have not been reviewed or edited. Do not use as-is.</p>
+</div>
+</section>
+<section id="dissection-of-genetics-prediction-of-cancer-risk" class="slide level2 center">
+<h2>Dissection of Genetics &amp; Prediction of Cancer Risk</h2>
+<p><strong>Hae Kyung Im, PhD</strong></p>
+<p>March 25, 2026</p>
+
+<img data-src="_page_0_Picture_2.jpeg" style="width:60.0%" class="r-stretch"></section>
+<section id="goals-of-the-class" class="slide level2">
+<h2>Goals of the Class</h2>
+<ul>
+<li>Learn key concepts and tools to understand the current literature in cancer genomics and interpret the results</li>
+<li>We will focus on germline risk factors in the first half of the course</li>
+</ul>
+<p><strong>Today:</strong></p>
+<ul>
+<li>Gene mapping: Linkage vs.&nbsp;association approaches</li>
+<li>Genetic architecture of cancer risk</li>
+<li>Overview and discussion of Genome-wide Association Studies (GWAS)</li>
+</ul>
+</section>
+<section id="introductions" class="slide level2">
+<h2>Introductions</h2>
+<ul>
+<li>Name, graduation year</li>
+<li>Why you are taking this class?</li>
+<li>Your favorite dish (or restaurant)</li>
+</ul>
+</section>
+<section>
+<section id="linkage-analysis" class="title-slide slide level1 center">
+<h1>Linkage Analysis</h1>
+
+</section>
+<section id="linkage-analysis-1" class="slide level2">
+<h2>Linkage Analysis</h2>
+<ul>
+<li>Gene mapping method popular before development of high throughput genotyping techniques</li>
+<li>100’s of markers interrogated (causal markers most likely missed)</li>
+<li>Important genes were found with this approach:
+<ul>
+<li><strong>CFTR</strong>: Cystic Fibrosis</li>
+<li><strong>HTT</strong>: Huntington disease</li>
+<li><strong>NOD2</strong>: Inflammatory bowel disease</li>
+</ul></li>
+<li>Markers co-transmitted (recombination rate &lt; 0.5) with the disease susceptibility locus (DSL) help locate the DSL</li>
+<li>Uses families with many cases (“loaded pedigrees”)</li>
+</ul>
+<aside class="notes">
+<p>Before the Human Genome Project, disease genes were discovered using linkage analysis. The technology of the time allowed measuring variation in about 100 loci across the genome. Many important genes were discovered with this approach. Linkage analysis is based on co-transmission of genetic markers and disease genes from parent to child. Advantages: a few hundred markers could cover the whole genome. Downside: low resolution and recruiting large families is harder than a large unrelated cohort.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="high-penetrance-cancer-susceptibility-genes" class="slide level2">
+<h2>High Penetrance Cancer Susceptibility Genes</h2>
+<ul>
+<li>Genetic linkage (1980s–1990s) found:
+<ul>
+<li>Breast and ovarian cancers: <strong>BRCA1</strong>, <strong>BRCA2</strong></li>
+<li>Colorectal cancer: <strong>APC</strong>, <strong>MLH1</strong>, <strong>MSH2</strong></li>
+<li>Melanoma: <strong>CDKN2A</strong></li>
+</ul></li>
+<li>To date, &gt;70 cancer susceptibility genes (CSGs) with relative risks (RR) of 5–100</li>
+</ul>
+<div class="source-credit">
+<p>Sud et al 2017 NRC</p>
+</div>
+<aside class="notes">
+<p>Many high penetrance (large effect) cancer susceptibility genes were found using linkage analysis.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+<img data-src="_page_5_Figure_0.jpeg" class="r-stretch"><aside class="notes">
+<p>By the mid-1990s, discoveries using linkage were dwindling, prompting Risch and Merikangas to propose genome-wide association studies — genotyping ~100K loci — considered science fiction at the time. This added urgency to completing the Human Genome Project.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-human-genome-project" class="slide level2">
+<h2>The Human Genome Project</h2>
+
+<img data-src="_page_6_Picture_0.jpeg" class="r-stretch"><aside class="notes">
+<p>The first draft of the human genome was announced by President Bill Clinton, who compared it to the moon landing. Technological advances from the HGP made GWAS possible.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="gene-mapping-methods" class="slide level2">
+<h2>Gene Mapping Methods</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Linkage analysis</strong></p>
+<ul>
+<li>Popular before high throughput technology</li>
+<li>Based on co-transmission of genetic markers and disease genes</li>
+<li>A few hundred markers can cover the whole genome</li>
+<li>Low resolution</li>
+<li>Pedigree/family based</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Association mapping</strong></p>
+<ul>
+<li>Need a large number of markers (&gt; 1 million)</li>
+<li>Genetic markers in <strong>LD (Linkage Disequilibrium)</strong> with disease genes</li>
+<li>Higher resolution</li>
+<li>Families not needed (easier to recruit large cohorts)</li>
+</ul>
+</div></div>
+
+<img data-src="_page_7_Picture_7.jpeg" class="r-stretch"><aside class="notes">
+<p>Association methods are based on LD between genetic markers and disease genes. For common variants (MAF &gt; 5%), about 1 million SNPs can tag most common variants. So even if the causal variant isn’t measured but is common, a correlated (in LD) SNP can be detected — called tag SNPs or index SNPs.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="genetic-architecture-of-cancer-risk" class="title-slide slide level1 center">
+<h1>Genetic Architecture of Cancer Risk</h1>
+
+</section>
+<section id="expected-to-find-high-penetrance-genes" class="slide level2">
+<h2>Expected to Find High Penetrance Genes</h2>
+
+<img data-src="_page_8_Picture_1.jpeg" class="r-stretch"><aside class="notes">
+<p>Before GWAS, based on what we knew from linkage studies, we expected to find high penetrance (large effect size) genes driving cancer risk.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="found-many-low-penetrance-variants" class="slide level2">
+<h2>Found Many Low Penetrance Variants</h2>
+
+<img data-src="_page_9_Picture_1.jpeg" class="r-stretch"><aside class="notes">
+<p>Instead, GWAS found a large number of variants with modest effect sizes (low penetrance). The genetic architecture of cancer risk turned out to be highly polygenic, requiring better statistical methods to make sense of the discoveries.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="found-many-low-penetrance-variants-1" class="slide level2">
+<h2>Found Many Low Penetrance Variants</h2>
+<p><img data-src="_page_10_Picture_1.jpeg"></p>
+<p><strong>Genetic architecture of most cancer risk is highly polygenic</strong></p>
+<p><img data-src="_page_11_Figure_0.jpeg"></p>
+<aside class="notes">
+<p>This figure shows that discoverability of risk alleles depends on population frequency. GWAS unlocked many discoveries on the lower left, but turning them into actionable targets requires new statistical concepts.</p>
+<p>Low penetrance = low relative risk = small effect size</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="review-hypothesis-testing" class="title-slide slide level1 center">
+<h1>Review: Hypothesis Testing</h1>
+
+</section>
+<section id="review-hypothesis-testing-1" class="slide level2">
+<h2>Review: Hypothesis Testing</h2>
+<ul>
+<li><strong>H₀</strong>: null hypothesis (e.g., no difference in case-control allele frequencies)</li>
+<li><strong>Hₐ</strong>: alternative hypothesis (there is a difference, correlated with causal variant)</li>
+<li>Test statistic <strong>Z</strong>: in many situations associated to a model</li>
+<li>Significance level: α = allowed type I error (reject null when null is true)</li>
+<li><strong>p-value</strong> = P(observed test statistic more extreme than threshold | H₀)</li>
+</ul>
+<p><strong>We reject H₀ if the observed test statistic is more extreme than what we would expect by chance</strong></p>
+<aside class="notes">
+<p>We reject H₀ if the observed test statistic is more extreme than a threshold determined so that the probability of type I error stays below a pre-established significance level α. Usually, if p-values are smaller than the significance level, the null hypothesis is rejected.</p>
+<p>Type I error: probability of rejecting the null when the null is true.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="review-hypothesis-testing-2" class="slide level2">
+<h2>Review: Hypothesis Testing</h2>
+
+<img data-src="_page_14_Figure_1.jpeg" class="r-stretch"><ul>
+<li><strong>α</strong>: type I error — probability of rejecting H₀ when H₀ is true (false positive rate)</li>
+<li><strong>β</strong>: type II error — probability of not rejecting H₀ when H₀ is false (false negative rate)</li>
+<li><strong>Power</strong> = 1 − β</li>
+</ul>
+<aside class="notes">
+<p>This figure shows the test statistics under H₀ and Hₐ. The decision rule is to reject H₀ if the test statistic exceeds the threshold. We choose significance level α (typically 0.05) and calculate the threshold. When running multiple tests, a much more stringent significance level is required.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="p-value" class="slide level2">
+<h2>P-value</h2>
+
+<img data-src="_page_15_Figure_1.jpeg" class="r-stretch"><p>P-value = P(result as extreme or more extreme than observed | H₀ is true)</p>
+<div class="source-credit">
+<p><a href="https://en.wikipedia.org/wiki/P-value">Wikipedia: P-value</a></p>
+</div>
+</section>
+<section id="xkcd-take-on-p-values" class="slide level2">
+<h2>xkcd Take on P-values</h2>
+
+<img data-src="_page_16_Figure_1.jpeg" class="r-stretch"><p><strong>What’s alpha here?</strong></p>
+<div class="source-credit">
+<p><a href="https://xkcd.com/1478/">xkcd 1478</a></p>
+</div>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+
+<img data-src="_page_17_Figure_0.jpeg" class="r-stretch"><aside class="notes">
+<p>How would you estimate the null distribution of mastectomy rates?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="regression-approach-single-snp" class="title-slide slide level1 center">
+<h1>Regression Approach: Single SNP</h1>
+
+</section>
+<section id="regression-approach" class="slide level2">
+<h2>Regression Approach</h2>
+<p><span class="math display">\[Y = \mu + a \cdot \text{age} + \beta \cdot X + \epsilon\]</span></p>
+<ul>
+<li>Parameters β estimated using MLE, least squares, etc.</li>
+<li>Null hypothesis: β = 0</li>
+<li>Can handle many types of traits with the same approach</li>
+<li>Can correct for covariates (age, sex, ancestry)</li>
+<li>Useful for prediction</li>
+</ul>
+<p>Genotype: <em>aa, aA, AA</em> → <strong>X₁</strong>: dosage = number of <em>A</em> alleles</p>
+</section>
+<section id="regression-approach-quantitative-traits" class="slide level2">
+<h2>Regression Approach: Quantitative Traits</h2>
+<p><strong>Quantitative trait</strong> (e.g., height, BMI, systolic blood pressure)</p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1 \cdot X_1 + \epsilon, \quad \epsilon \sim N(0, \sigma^2)\]</span></p>
+<p><strong>Linear Regression</strong></p>
+<p>Genotype: <em>aa, aA, AA</em> → <strong>X₁</strong>: dosage = number of <em>A</em> alleles</p>
+<aside class="notes">
+<p>Quantitative traits are modeled with normal errors: mean = β₀ + β₁X₁, where X₁ is the number of minor alleles.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="regression-approach-disease-traits" class="slide level2">
+<h2>Regression Approach: Disease Traits</h2>
+<p><strong>Binary trait</strong> (e.g., disease status, hypertension)</p>
+<p><span class="math display">\[Y \sim \text{Bernoulli}(\pi)\]</span></p>
+<p><span class="math display">\[\text{logit}(\pi) = \log\!\left(\frac{\pi}{1-\pi}\right) = \beta_0 + \beta_1 X_1\]</span></p>
+<p><strong>Logistic Regression</strong> — β₁ = log odds ratio</p>
+<aside class="notes">
+<p>Binary traits are modeled using logistic regression. β₁ is the log odds ratio: for X₁ = 0, log odds = β₀; for X₁ = 1, log odds = β₀ + β₁.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="genome-wide-association-studies" class="title-slide slide level1 center">
+<h1>Genome-wide Association Studies</h1>
+
+</section>
+<section id="gwas-overview" class="slide level2">
+<h2>GWAS: Overview</h2>
+
+<img data-src="_page_24_Figure_0.jpeg" class="r-stretch"><aside class="notes">
+<p>GWAS collects individuals (cases/controls for disease, or population samples for quantitative traits), measures genotypes at ~1 million markers, and performs association tests between the phenotype and each genetic marker (SNPs).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="gwas-data-structure" class="slide level2">
+<h2>GWAS: Data Structure</h2>
+
+<img data-src="_page_25_Figure_0.jpeg" class="r-stretch"><aside class="notes">
+<p>The genotype matrix X and phenotype vector Y. Single-marker SNP association tests produce a table of results: effect size, standard error, and p-values.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="gwas-manhattan-plot" class="slide level2">
+<h2>GWAS: Manhattan Plot</h2>
+<p><img data-src="_page_26_Figure_0.jpeg"></p>
+<p><img data-src="_page_26_Figure_1.jpeg"></p>
+<p><strong>GWAS significance threshold: 5×10⁻⁸</strong></p>
+<div class="source-credit">
+<p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2865585/">Ehret 2011, PMC2865585</a></p>
+</div>
+<aside class="notes">
+<p>Manhattan plots visualize GWAS results. Points above −log₁₀(5×10⁻⁸) are called GWAS significant.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="qqplot" class="slide level2">
+<h2>QQPlot</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li>A Q-Q plot is useful to present GWAS results and check for potential issues</li>
+<li><strong>X-axis:</strong> expected −log(P) under the null (uniformly distributed p-values)</li>
+<li><strong>Y-axis:</strong> observed −log(P)</li>
+<li>Dots above the 45° line deserve a closer look</li>
+<li>Can also detect population stratification</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<p><img data-src="_page_27_Figure_6.jpeg"></p>
+</div></div>
+<aside class="notes">
+<p>In a well-behaved GWAS, most points line up at the identity line, with a few departing at the upper right (true associations). Early departure from the identity line for many points suggests population structure.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="gwas-snp-trait-discovery-timeline" class="slide level2">
+<h2>GWAS SNP-Trait Discovery Timeline</h2>
+
+<img data-src="_page_28_Figure_1.jpeg" class="r-stretch"><aside class="notes">
+<p>GWAS have been so successful that thousands have been performed since 2005. As of 2020, more than 70,000 SNP-trait associations are reported in the GWAS Catalog.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="snptrait-associations" class="slide level2">
+<h2>100,000+ SNP/Trait Associations</h2>
+
+<img data-src="_page_29_Figure_1.jpeg" class="r-stretch"><div class="source-credit">
+<p><a href="https://www.ebi.ac.uk/gwas/">GWAS Catalog</a></p>
+</div>
+</section></section>
+<section>
+<section id="wtccc-first-large-scale-gwas" class="title-slide slide level1 center">
+<h1>WTCCC: First Large Scale GWAS</h1>
+
+</section>
+<section id="wtccc" class="slide level2">
+<h2>WTCCC</h2>
+<ul>
+<li><strong>Wellcome Trust Case Control Consortium</strong></li>
+<li>GWAS of 2,000 cases and 3,000 shared controls for 7 diseases</li>
+<li>Platform: Affymetrix 500K Set</li>
+<li>Main paper published in 2007</li>
+<li>Results and summaries freely available; genotype data access granted to qualified investigators</li>
+</ul>
+<aside class="notes">
+<p>The WTCCC GWAS is a landmark study of 7 common diseases — the first large-scale GWAS performed.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="wtccc-population-structure" class="slide level2">
+<h2>WTCCC: Population Structure</h2>
+
+<img data-src="_page_32_Figure_0.jpeg" class="r-stretch"><aside class="notes">
+<p>Manhattan plot and QQ plot from WTCCC for association between recruitment site and genotype. Significant peaks on chromosomes 1, 4, 6, and 20 show allele frequency differences across sites — an indication of population structure. We will return to methods for correcting for this later.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="wtccc-qq-plots-by-disease" class="slide level2">
+<h2>WTCCC: QQ Plots by Disease</h2>
+
+<img data-src="_page_33_Figure_0.jpeg" class="r-stretch"><aside class="notes">
+<p>QQ plots for all 7 WTCCC diseases. Some early departure from the identity line suggests population structure. At the time, methods for correcting for population structure were still underdeveloped.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="wtccc-manhattan-plots" class="slide level2">
+<h2>WTCCC: Manhattan Plots</h2>
+
+<img data-src="_page_34_Figure_0.jpeg" class="r-stretch"></section>
+<section id="wtccc-locus-zoom" class="slide level2">
+<h2>WTCCC: Locus Zoom</h2>
+
+<img data-src="_page_35_Figure_0.jpeg" class="r-stretch"><aside class="notes">
+<p>Locus zoom plots are staples of any GWAS paper. Variants in LD tend to have similar association p-values. If a single variant is significant by itself, that may be a sign of a genotyping issue.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="lab-homework" class="title-slide slide level1 center">
+<h1>Lab &amp; Homework</h1>
+
+</section>
+<section id="clarifications-and-logistics" class="slide level2">
+<h2>Clarifications and Logistics</h2>
+<ul>
+<li>Homework problems are part of the learning process and may cover subjects not discussed in class</li>
+<li>Don’t get stuck — ask classmates, TAs, and instructors</li>
+<li>Labs can be done on Mac OS or Linux; Windows users may want to create Posit accounts for terminal access</li>
+</ul>
+</section>
+<section id="labhomework" class="slide level2">
+<h2>Lab/Homework</h2>
+<p><a href="https://course-material.hakyimlab.org/post/bios-25328/2024-03-18-lab-01-command-line-r/" class="uri">https://course-material.hakyimlab.org/post/bios-25328/2024-03-18-lab-01-command-line-r/</a></p>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>⚠️ DRAFT — NEEDS EDITING BEFORE USE</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="L2-Cancer-GWAS_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="L2-Cancer-GWAS_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="L2-Cancer-GWAS_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="L2-Cancer-GWAS_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="L2-Cancer-GWAS_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="L2-Cancer-GWAS_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="L2-Cancer-GWAS_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="L2-Cancer-GWAS_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="L2-Cancer-GWAS_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="L2-Cancer-GWAS_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

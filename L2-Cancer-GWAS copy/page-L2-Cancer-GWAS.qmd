@@ -1,0 +1,9 @@
+---
+title: "L2 · NEED EDITING Lecture 2: Dissection of Genetics & Prediction of Cancer Risk"
+date: 'March 25, 2026'
+author: "Hae Kyung Im, PhD"
+description: "Lecture slides"
+categories: [slides]
+---
+
+[Open slide deck](L2-Cancer-GWAS.html){.btn .btn-primary .btn-lg}
