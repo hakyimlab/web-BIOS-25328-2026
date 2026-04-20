@@ -1,73 +1,24 @@
 [
   {
-    "objectID": "L8-eQTL-finemapping-enrichment/page-L8-eQTL-finemapping-enrichment.html",
-    "href": "L8-eQTL-finemapping-enrichment/page-L8-eQTL-finemapping-enrichment.html",
-    "title": "L8 · eQTL Analysis, Fine-Mapping, and Heritability Enrichment",
+    "objectID": "L9-post-GWAS-analysis/page-L9-Post-GWAS-MR-2026.html",
+    "href": "L9-post-GWAS-analysis/page-L9-Post-GWAS-MR-2026.html",
+    "title": "L9 · Gene Level Association Tests and Mendelian Randomization",
     "section": "",
     "text": "Open slide deck\n\n\n\n© HakyImLab and Listed Authors - CC BY 4.0 License"
   },
   {
-    "objectID": "L6-beyond-pcs/page-L6-beyond-pcs.html",
-    "href": "L6-beyond-pcs/page-L6-beyond-pcs.html",
-    "title": "L6 · Beyond PCs: Mixed Effects Models & LD Score Regression",
+    "objectID": "L7-prs-2026/page-L7-prs-2026.html",
+    "href": "L7-prs-2026/page-L7-prs-2026.html",
+    "title": "L7 · Polygenic Risk Scores",
     "section": "",
     "text": "Open slide deck\n\n\n\n© HakyImLab and Listed Authors - CC BY 4.0 License"
   },
   {
-    "objectID": "L4-Multiple-Testing-Correction-2025/page-L4-Multiple-Testing-Correction-2025.html",
-    "href": "L4-Multiple-Testing-Correction-2025/page-L4-Multiple-Testing-Correction-2025.html",
-    "title": "L4 · Lecture 4: Multiple Testing Correction",
+    "objectID": "L5-Population-Structure-PCA-2026/page-L5-Population-Structure-PCA-2026.html",
+    "href": "L5-Population-Structure-PCA-2026/page-L5-Population-Structure-PCA-2026.html",
+    "title": "L5 · Principal Component Analysis and Population Structure",
     "section": "",
     "text": "Open slide deck\n\n\n\n© HakyImLab and Listed Authors - CC BY 4.0 License"
-  },
-  {
-    "objectID": "post/homework-04.html",
-    "href": "post/homework-04.html",
-    "title": "homework 4 - polygenic risk scores",
-    "section": "",
-    "text": "Lecture 6 assessment quiz (10 points)\nLecture 7 assessment quiz (10 points)\n\n\n\n\n\n\n\nBefore you start: download the lab data\n\n\n\nDownload the lab data from Box and place it in a folder called Lab-personal-genomes-project-data inside your project directory. See Lab 04 for full setup instructions.\n© HakyImLab and Listed Authors - CC BY 4.0 License"
-  },
-  {
-    "objectID": "post/homework-04.html#a.-complete-the-following-assessments",
-    "href": "post/homework-04.html#a.-complete-the-following-assessments",
-    "title": "homework 4 - polygenic risk scores",
-    "section": "",
-    "text": "Lecture 6 assessment quiz (10 points)\nLecture 7 assessment quiz (10 points)\n\n\n\n\n\n\n\nBefore you start: download the lab data\n\n\n\nDownload the lab data from Box and place it in a folder called Lab-personal-genomes-project-data inside your project directory. See Lab 04 for full setup instructions."
-  },
-  {
-    "objectID": "post/homework-04.html#b.-finish-the-knit-lab-4-70-points",
-    "href": "post/homework-04.html#b.-finish-the-knit-lab-4-70-points",
-    "title": "homework 4 - polygenic risk scores",
-    "section": "B. Finish the knit lab 4 (70 points)",
-    "text": "B. Finish the knit lab 4 (70 points)\nIn this section, you will complete the practical implementation of polygenic risk scoring using PRSice software as done in Lab 04. As a reminder, it involves:\n\nSetting up the environment and downloading necessary data:\n\nDownload and install PRSice software\nSet up the Personal Genome Project data\nInstall required R packages (tidyverse, RSQLite, glue)\n\nData exploration and preparation:\n\nExplore the phenotype database\nAnalyze demographic distributions\nCreate phenotype data files for analysis\n\nRunning PRSice analysis:\n\nCompute polygenic risk scores for height\nUse UK Biobank height GWAS results as the base data\nApply various p-value thresholds for score calculation\n\nResults analysis and visualization:\n\nPlot observed versus predicted height values\nPerform regression analysis to assess prediction accuracy\nInterpret the results in the context of polygenic prediction\n\n\nThe lab will help you understand: - The practical implementation of PRS calculations - The relationship between GWAS results and phenotype prediction - The challenges and limitations of polygenic risk scoring - The interpretation of PRS results in real-world data\nMake sure to document your code, results, and interpretations clearly in your knitted document. The grading will focus on: - Correct implementation of the analysis pipeline - Quality of data visualization - Clarity of interpretation - Proper documentation of the process"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "BIOS 25328",
-    "section": "",
-    "text": "Course material for BIOS 25328 — Genomics and Bioinformatics (Hae Kyung Im).\n\n\n\n\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nCategories\n\n\n\n\n\n\n\n\nApr 1, 2026\n\n\nL4 · Lecture 4: Multiple Testing Correction\n\n\nslides\n\n\n\n\n\n\nApr 6, 2026\n\n\nL5 · Principal Component Analysis and Population Structure\n\n\nslides\n\n\n\n\n\n\nApr 8, 2026\n\n\nL6 · Beyond PCs: Mixed Effects Models & LD Score Regression\n\n\nslides\n\n\n\n\n\n\nApr 10, 2026\n\n\nhomework 3\n\n\nhomework\n\n\n\n\n\n\nApr 13, 2026\n\n\nL7 · Polygenic Risk Scores\n\n\nslides\n\n\n\n\n\n\nApr 15, 2026\n\n\nL8 · eQTL Analysis, Fine-Mapping, and Heritability Enrichment\n\n\nslides\n\n\n\n\n\n\nApr 17, 2026\n\n\nhomework 4 - polygenic risk scores\n\n\nhomework\n\n\n\n\n\n\nApr 17, 2026\n\n\nlab 4\n\n\nlab\n\n\n\n\n\n\nNo matching items\n© HakyImLab and Listed Authors - CC BY 4.0 License"
-  },
-  {
-    "objectID": "post/homework-03.html",
-    "href": "post/homework-03.html",
-    "title": "homework 3",
-    "section": "",
-    "text": "Download HapMap3 chromosome 22 data (5pt)\n\n\nYou can find the full HapMap 3 genotype data with other useful information here\n\n\nDownload Growth Data (5pt) here\n\n\nif you want background information on this trait you can read this paper)\n\n\nCalculate PCs using plink (10pt)\nPlot the first two principal components of the genotype matrix, color by population (10pt)\nRun GWAS of growth with and without adjusting for PCs (20pt)\n\nshow qqplot and manhattan plot for each (10pt)\n\nCreate HapMap Trios Relatedness Matrix (10pt)\ngenerate a tileplot to visualize the population and relatedness patterns here (10pt)\n\nLinks\n\nYou can borrow code from the lecture and the links below\n\nhttps://hakyimlab.github.io/hgen471/L6-population-structure.html\nhttps://bios25328.hakyimlab.org/post/2020/02/06/l8-grm/\n\nslides\n\n\n\nwget -O hapmap3_ch22.bed https://uchicago.box.com/shared/static/uu5fbx135qgp37spnrrsxrk4acuibkwh.bed\nwget -O hapmap3_ch22.bim https://uchicago.box.com/shared/static/eh0thcbeo5sb1ywufrowtm3uqqgad0b2.bim\nwget -O hapmap3_ch22.fam https://uchicago.box.com/shared/static/7py9smo190ucl6jrdwe0de8wjdc6rrwq.fam\n\n\n\nwget https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20220305.zip\n##Use this link if you are on Rstudio Cloud otherwise go to the website\n##https://zzz.bwh.harvard.edu/plink/download.shtml \nunzip plink_linux_x86_64_20220305.zip\nmikdir bin \nmv plink bin\n© HakyImLab and Listed Authors - CC BY 4.0 License"
-  },
-  {
-    "objectID": "post/homework-03.html#a.-reproduce-figures-and-analysis-in-lectures-5-and-6-80-points",
-    "href": "post/homework-03.html#a.-reproduce-figures-and-analysis-in-lectures-5-and-6-80-points",
-    "title": "homework 3",
-    "section": "",
-    "text": "Download HapMap3 chromosome 22 data (5pt)\n\n\nYou can find the full HapMap 3 genotype data with other useful information here\n\n\nDownload Growth Data (5pt) here\n\n\nif you want background information on this trait you can read this paper)\n\n\nCalculate PCs using plink (10pt)\nPlot the first two principal components of the genotype matrix, color by population (10pt)\nRun GWAS of growth with and without adjusting for PCs (20pt)\n\nshow qqplot and manhattan plot for each (10pt)\n\nCreate HapMap Trios Relatedness Matrix (10pt)\ngenerate a tileplot to visualize the population and relatedness patterns here (10pt)\n\nLinks\n\nYou can borrow code from the lecture and the links below\n\nhttps://hakyimlab.github.io/hgen471/L6-population-structure.html\nhttps://bios25328.hakyimlab.org/post/2020/02/06/l8-grm/\n\nslides\n\n\n\nwget -O hapmap3_ch22.bed https://uchicago.box.com/shared/static/uu5fbx135qgp37spnrrsxrk4acuibkwh.bed\nwget -O hapmap3_ch22.bim https://uchicago.box.com/shared/static/eh0thcbeo5sb1ywufrowtm3uqqgad0b2.bim\nwget -O hapmap3_ch22.fam https://uchicago.box.com/shared/static/7py9smo190ucl6jrdwe0de8wjdc6rrwq.fam\n\n\n\nwget https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20220305.zip\n##Use this link if you are on Rstudio Cloud otherwise go to the website\n##https://zzz.bwh.harvard.edu/plink/download.shtml \nunzip plink_linux_x86_64_20220305.zip\nmikdir bin \nmv plink bin"
-  },
-  {
-    "objectID": "post/homework-03.html#b.-finish-running-the-marees-gwas-tutorial",
-    "href": "post/homework-03.html#b.-finish-running-the-marees-gwas-tutorial",
-    "title": "homework 3",
-    "section": "B. Finish running the Marees GWAS tutorial",
-    "text": "B. Finish running the Marees GWAS tutorial\n\nFinish lab 3 and answer the following questions.\n\nUsing the output from the tutorial or using the commands you learned from it, answer the following questions. Show the command you used to create the result.\n\nHow many individuals are in the genotype file you downloaded? (5 pts)\nExplain the contents of .fam, .bim, .bed files (5 pts)\nWrite the captions for the figures generated by the commands in 1_Main_script_QC_GWAS.txt and 3_Main_script_association_GWAS (5 pts per figure caption)\nExplain what you accomplished with the tutorial and explain the results/figures you obtained. (20 pts)"
   },
   {
     "objectID": "post/2026-04-17-lab-04/index.html",
@@ -105,16 +56,72 @@
     "text": "run PRSice\n\ncreate phenotype data file\ncreate phenotype data file as intersection of the plink formatted fam file and the users table from the database repgp-data.sqlite3\n(r code block)\n\nfam = read_tsv(glue::glue(\"{DATA}/repgp.fam\"),col_names = FALSE)\n\n(r code block)\n\nnames(fam)[1:2] = c(\"FID\",\"IID\")\nfam &lt;- fam %&gt;% select(FID, IID) %&gt;% inner_join(users %&gt;% select(sample,height,weight,gender), by=c(\"IID\"=\"sample\")) \nwrite_tsv(fam,file=glue::glue(\"{DATA}/phenodata.txt\"))\n\nexecute bash command to run PRSice\n(bash code block)\n\nmkdir /cloud/project/Lab-personal-genomes-project-data/output\n\nRscript /cloud/project/PRSice.R --dir /cloud/project \\\n    --prsice /cloud/project/PRSice_linux \\\n    --base /cloud/project/Lab-personal-genomes-project-data/ukb_height.gz \\\n    --target cloud/project/Lab-personal-genomes-project-data/repgp.chr# \\\n    --snp variant_id \\\n    --A1 effect_allele \\\n    --A2 non_effect_allele \\\n    --stat effect_size \\\n    --beta \\\n    --pvalue pvalue \\\n    --pheno-file /cloud/project/Lab-personal-genomes-project-data/phenodata.txt \\\n    --pheno-col height \\\n    --bar-levels 5e-08,5e-07,5e-06,5e-05,5e-04,5e-03,5e-02,5e-01,1 \\\n    --fastscore \\\n    --binary-target F \\\n    --thread 2 \\\n    --out /cloud/project/Lab-personal-genomes-project-data/output/height_score_all\n\nIf you get duplicated SNP ID, follow the instructions\n(bash code block)\n\nPRSice=\"/cloud/project/\"\nWORK=\"/cloud/project/Lab-personal-genomes-project-data/\"\n\nRscript $PRSice/PRSice.R --dir $PRSice \\\n    --prsice $PRSice/PRSice_mac \\\n    --base $WORK/ukb_height.gz \\\n    --extract $WORK/output/height_score_all.valid \\\n    --target $WORK/repgp.chr# \\\n    --snp variant_id \\\n    --A1 effect_allele \\\n    --A2 non_effect_allele \\\n    --stat effect_size \\\n    --beta \\\n    --pvalue pvalue \\\n    --pheno-file $WORK/phenodata.txt \\\n    --pheno-col height \\\n    --bar-levels 5e-08,5e-07,5e-06,5e-05,5e-04,5e-03,5e-02,5e-01,1 \\\n    --fastscore \\\n    --binary-target F \\\n    --thread 2 \\\n    --out $WORK/output/height_score_all\n\nThis may take a couple minutes\nplot observed vs predicted height\n(r code block)\n\n## we already have the phenotype data in the fam variable\npredicted_height = read_delim(glue::glue(\"{DATA}/output/height_score_all.best\"),delim=\" \")\n\n(r code block)\n\ncombined &lt;- predicted_height %&gt;% inner_join(fam,by=c(\"IID\"=\"IID\")) \ncombined %&gt;% ggplot(aes(PRS,height)) + geom_point() + theme_minimal(base_size = 15)\n\nregress observed height with predicted height (PRS)\n(r code block)\n\nsummary(lm(height ~ PRS,data=combined)) %&gt;% coef()"
   },
   {
-    "objectID": "L5-Population-Structure-PCA-2026/page-L5-Population-Structure-PCA-2026.html",
-    "href": "L5-Population-Structure-PCA-2026/page-L5-Population-Structure-PCA-2026.html",
-    "title": "L5 · Principal Component Analysis and Population Structure",
+    "objectID": "post/homework-03.html",
+    "href": "post/homework-03.html",
+    "title": "homework 3",
+    "section": "",
+    "text": "Download HapMap3 chromosome 22 data (5pt)\n\n\nYou can find the full HapMap 3 genotype data with other useful information here\n\n\nDownload Growth Data (5pt) here\n\n\nif you want background information on this trait you can read this paper)\n\n\nCalculate PCs using plink (10pt)\nPlot the first two principal components of the genotype matrix, color by population (10pt)\nRun GWAS of growth with and without adjusting for PCs (20pt)\n\nshow qqplot and manhattan plot for each (10pt)\n\nCreate HapMap Trios Relatedness Matrix (10pt)\ngenerate a tileplot to visualize the population and relatedness patterns here (10pt)\n\nLinks\n\nYou can borrow code from the lecture and the links below\n\nhttps://hakyimlab.github.io/hgen471/L6-population-structure.html\nhttps://bios25328.hakyimlab.org/post/2020/02/06/l8-grm/\n\nslides\n\n\n\nwget -O hapmap3_ch22.bed https://uchicago.box.com/shared/static/uu5fbx135qgp37spnrrsxrk4acuibkwh.bed\nwget -O hapmap3_ch22.bim https://uchicago.box.com/shared/static/eh0thcbeo5sb1ywufrowtm3uqqgad0b2.bim\nwget -O hapmap3_ch22.fam https://uchicago.box.com/shared/static/7py9smo190ucl6jrdwe0de8wjdc6rrwq.fam\n\n\n\nwget https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20220305.zip\n##Use this link if you are on Rstudio Cloud otherwise go to the website\n##https://zzz.bwh.harvard.edu/plink/download.shtml \nunzip plink_linux_x86_64_20220305.zip\nmikdir bin \nmv plink bin\n© HakyImLab and Listed Authors - CC BY 4.0 License"
+  },
+  {
+    "objectID": "post/homework-03.html#a.-reproduce-figures-and-analysis-in-lectures-5-and-6-80-points",
+    "href": "post/homework-03.html#a.-reproduce-figures-and-analysis-in-lectures-5-and-6-80-points",
+    "title": "homework 3",
+    "section": "",
+    "text": "Download HapMap3 chromosome 22 data (5pt)\n\n\nYou can find the full HapMap 3 genotype data with other useful information here\n\n\nDownload Growth Data (5pt) here\n\n\nif you want background information on this trait you can read this paper)\n\n\nCalculate PCs using plink (10pt)\nPlot the first two principal components of the genotype matrix, color by population (10pt)\nRun GWAS of growth with and without adjusting for PCs (20pt)\n\nshow qqplot and manhattan plot for each (10pt)\n\nCreate HapMap Trios Relatedness Matrix (10pt)\ngenerate a tileplot to visualize the population and relatedness patterns here (10pt)\n\nLinks\n\nYou can borrow code from the lecture and the links below\n\nhttps://hakyimlab.github.io/hgen471/L6-population-structure.html\nhttps://bios25328.hakyimlab.org/post/2020/02/06/l8-grm/\n\nslides\n\n\n\nwget -O hapmap3_ch22.bed https://uchicago.box.com/shared/static/uu5fbx135qgp37spnrrsxrk4acuibkwh.bed\nwget -O hapmap3_ch22.bim https://uchicago.box.com/shared/static/eh0thcbeo5sb1ywufrowtm3uqqgad0b2.bim\nwget -O hapmap3_ch22.fam https://uchicago.box.com/shared/static/7py9smo190ucl6jrdwe0de8wjdc6rrwq.fam\n\n\n\nwget https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20220305.zip\n##Use this link if you are on Rstudio Cloud otherwise go to the website\n##https://zzz.bwh.harvard.edu/plink/download.shtml \nunzip plink_linux_x86_64_20220305.zip\nmikdir bin \nmv plink bin"
+  },
+  {
+    "objectID": "post/homework-03.html#b.-finish-running-the-marees-gwas-tutorial",
+    "href": "post/homework-03.html#b.-finish-running-the-marees-gwas-tutorial",
+    "title": "homework 3",
+    "section": "B. Finish running the Marees GWAS tutorial",
+    "text": "B. Finish running the Marees GWAS tutorial\n\nFinish lab 3 and answer the following questions.\n\nUsing the output from the tutorial or using the commands you learned from it, answer the following questions. Show the command you used to create the result.\n\nHow many individuals are in the genotype file you downloaded? (5 pts)\nExplain the contents of .fam, .bim, .bed files (5 pts)\nWrite the captions for the figures generated by the commands in 1_Main_script_QC_GWAS.txt and 3_Main_script_association_GWAS (5 pts per figure caption)\nExplain what you accomplished with the tutorial and explain the results/figures you obtained. (20 pts)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "BIOS 25328",
+    "section": "",
+    "text": "Course material for BIOS 25328 — Genomics and Bioinformatics (Hae Kyung Im).\n\n\n\n\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nCategories\n\n\n\n\n\n\n\n\nApr 1, 2026\n\n\nL4 · Lecture 4: Multiple Testing Correction\n\n\nslides\n\n\n\n\n\n\nApr 6, 2026\n\n\nL5 · Principal Component Analysis and Population Structure\n\n\nslides\n\n\n\n\n\n\nApr 8, 2026\n\n\nL6 · Beyond PCs: Mixed Effects Models & LD Score Regression\n\n\nslides\n\n\n\n\n\n\nApr 10, 2026\n\n\nhomework 3\n\n\nhomework\n\n\n\n\n\n\nApr 13, 2026\n\n\nL7 · Polygenic Risk Scores\n\n\nslides\n\n\n\n\n\n\nApr 15, 2026\n\n\nL8 · eQTL Analysis, Fine-Mapping, and Heritability Enrichment\n\n\nslides\n\n\n\n\n\n\nApr 17, 2026\n\n\nhomework 4 - polygenic risk scores\n\n\nhomework\n\n\n\n\n\n\nApr 17, 2026\n\n\nlab 4\n\n\nlab\n\n\n\n\n\n\nApr 20, 2026\n\n\nL9 · Gene Level Association Tests and Mendelian Randomization\n\n\nslides\n\n\n\n\n\n\nNo matching items\n© HakyImLab and Listed Authors - CC BY 4.0 License"
+  },
+  {
+    "objectID": "post/homework-04.html",
+    "href": "post/homework-04.html",
+    "title": "homework 4 - polygenic risk scores",
+    "section": "",
+    "text": "Lecture 6 assessment quiz (10 points)\nLecture 7 assessment quiz (10 points)\n\n\n\n\n\n\n\nBefore you start: download the lab data\n\n\n\nDownload the lab data from Box and place it in a folder called Lab-personal-genomes-project-data inside your project directory. See Lab 04 for full setup instructions.\n© HakyImLab and Listed Authors - CC BY 4.0 License"
+  },
+  {
+    "objectID": "post/homework-04.html#a.-complete-the-following-assessments",
+    "href": "post/homework-04.html#a.-complete-the-following-assessments",
+    "title": "homework 4 - polygenic risk scores",
+    "section": "",
+    "text": "Lecture 6 assessment quiz (10 points)\nLecture 7 assessment quiz (10 points)\n\n\n\n\n\n\n\nBefore you start: download the lab data\n\n\n\nDownload the lab data from Box and place it in a folder called Lab-personal-genomes-project-data inside your project directory. See Lab 04 for full setup instructions."
+  },
+  {
+    "objectID": "post/homework-04.html#b.-finish-the-knit-lab-4-70-points",
+    "href": "post/homework-04.html#b.-finish-the-knit-lab-4-70-points",
+    "title": "homework 4 - polygenic risk scores",
+    "section": "B. Finish the knit lab 4 (70 points)",
+    "text": "B. Finish the knit lab 4 (70 points)\nIn this section, you will complete the practical implementation of polygenic risk scoring using PRSice software as done in Lab 04. As a reminder, it involves:\n\nSetting up the environment and downloading necessary data:\n\nDownload and install PRSice software\nSet up the Personal Genome Project data\nInstall required R packages (tidyverse, RSQLite, glue)\n\nData exploration and preparation:\n\nExplore the phenotype database\nAnalyze demographic distributions\nCreate phenotype data files for analysis\n\nRunning PRSice analysis:\n\nCompute polygenic risk scores for height\nUse UK Biobank height GWAS results as the base data\nApply various p-value thresholds for score calculation\n\nResults analysis and visualization:\n\nPlot observed versus predicted height values\nPerform regression analysis to assess prediction accuracy\nInterpret the results in the context of polygenic prediction\n\n\nThe lab will help you understand: - The practical implementation of PRS calculations - The relationship between GWAS results and phenotype prediction - The challenges and limitations of polygenic risk scoring - The interpretation of PRS results in real-world data\nMake sure to document your code, results, and interpretations clearly in your knitted document. The grading will focus on: - Correct implementation of the analysis pipeline - Quality of data visualization - Clarity of interpretation - Proper documentation of the process"
+  },
+  {
+    "objectID": "L4-Multiple-Testing-Correction-2025/page-L4-Multiple-Testing-Correction-2025.html",
+    "href": "L4-Multiple-Testing-Correction-2025/page-L4-Multiple-Testing-Correction-2025.html",
+    "title": "L4 · Lecture 4: Multiple Testing Correction",
     "section": "",
     "text": "Open slide deck\n\n\n\n© HakyImLab and Listed Authors - CC BY 4.0 License"
   },
   {
-    "objectID": "L7-prs-2026/page-L7-prs-2026.html",
-    "href": "L7-prs-2026/page-L7-prs-2026.html",
-    "title": "L7 · Polygenic Risk Scores",
+    "objectID": "L6-beyond-pcs/page-L6-beyond-pcs.html",
+    "href": "L6-beyond-pcs/page-L6-beyond-pcs.html",
+    "title": "L6 · Beyond PCs: Mixed Effects Models & LD Score Regression",
+    "section": "",
+    "text": "Open slide deck\n\n\n\n© HakyImLab and Listed Authors - CC BY 4.0 License"
+  },
+  {
+    "objectID": "L8-eQTL-finemapping-enrichment/page-L8-eQTL-finemapping-enrichment.html",
+    "href": "L8-eQTL-finemapping-enrichment/page-L8-eQTL-finemapping-enrichment.html",
+    "title": "L8 · eQTL Analysis, Fine-Mapping, and Heritability Enrichment",
     "section": "",
     "text": "Open slide deck\n\n\n\n© HakyImLab and Listed Authors - CC BY 4.0 License"
   }

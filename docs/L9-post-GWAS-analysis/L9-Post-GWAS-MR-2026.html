@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="L9-Post-GWAS-MR-2026_files/libs/clipboard/clipboard.min.js"></script>
+<script src="L9-Post-GWAS-MR-2026_files/libs/quarto-html/tabby.min.js"></script>
+<script src="L9-Post-GWAS-MR-2026_files/libs/quarto-html/popper.min.js"></script>
+<script src="L9-Post-GWAS-MR-2026_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="L9-Post-GWAS-MR-2026_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="L9-Post-GWAS-MR-2026_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="L9-Post-GWAS-MR-2026_files/libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
+
+  <meta name="author" content="Hae Kyung Im, PhD">
+  <meta name="dcterms.date" content="2026-04-20">
+  <title>Gene Level Association Tests and Mendelian Randomization</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="L9-Post-GWAS-MR-2026_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="L9-Post-GWAS-MR-2026_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="L9-Post-GWAS-MR-2026_files/libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="custom.css">
+  <link href="L9-Post-GWAS-MR-2026_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="L9-Post-GWAS-MR-2026_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="L9-Post-GWAS-MR-2026_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="L9-Post-GWAS-MR-2026_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Gene Level Association Tests and Mendelian Randomization</h1>
+  <p class="subtitle">BIOS 25328 · Lecture 9</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Hae Kyung Im, PhD 
+</div>
+</div>
+</div>
+
+  <p class="date">2026-04-20</p>
+</section>
+<section id="learning-objectives" class="slide level2">
+<h2>Learning Objectives</h2>
+<ul>
+<li>Explain why post-GWAS analysis is necessary to identify causal genes and mechanisms</li>
+<li>Describe how eQTLs and sQTLs connect non-coding variants to complex traits</li>
+<li>Understand the TWAS/PrediXcan framework and its advantages over naive approaches</li>
+<li>Explain what colocalization tests and when it fails</li>
+<li>Define Mendelian Randomization and its three core assumptions</li>
+<li>Interpret MR results and recognize violations of MR assumptions (pleiotropy)</li>
+</ul>
+<aside class="notes">
+<p>This lecture bridges GWAS discovery and biological understanding. Part 1 covers gene-level association methods — TWAS (PrediXcan) and colocalization — that identify which genes underlie GWAS loci. Part 2 introduces Mendelian Randomization for testing causal effects of modifiable exposures on disease. Both halves share the theme: association is not causation, but genetics can help us get closer.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section>
+<section id="from-gwas-loci-to-genes" class="title-slide slide level1 center">
+<h1>From GWAS Loci to Genes</h1>
+
+</section>
+<section id="most-gwas-variants-are-non-coding" class="slide level2">
+<h2>Most GWAS Variants Are Non-Coding</h2>
+<ul>
+<li>~90% of GWAS catalog variants fall outside protein-coding regions</li>
+<li>Non-coding variants cannot be interpreted directly from protein function</li>
+<li>They likely act by <strong>regulating gene expression</strong> — changing how much of a gene is made, or how it’s spliced</li>
+</ul>
+<div class="takehome">
+<p>GWAS finds <em>where</em> in the genome; post-GWAS analysis asks <em>what gene</em> and <em>through what mechanism</em></p>
+</div>
+<aside class="notes">
+<p>This is the central motivation for everything in the first half of the lecture. If variants were coding, we could immediately ask “what does this amino acid change do?” Non-coding variants require a detour through gene regulation.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="which-gene-should-we-target-for-therapy" class="slide level2">
+<h2>Which Gene Should We Target for Therapy?</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_3_Figure_1.jpeg" class="r-stretch"><aside class="notes">
+<p>A GWAS locus may contain dozens of variants in high LD. Multiple genes may be nearby. Simply picking the nearest gene is unreliable. We need principled methods to connect loci to genes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="altered-protein-levels-influence-disease-risk" class="slide level2">
+<h2>Altered Protein Levels Influence Disease Risk</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_4_Picture_1.jpeg" class="r-stretch"><div class="source-credit">
+<p>Albert &amp; Kruglyak (2015). <em>Nature Reviews Genetics</em></p>
+</div>
+<aside class="notes">
+<p>Regulatory variants alter transcript levels or splicing, which changes protein abundance, which influences phenotype. This causal chain justifies looking at eQTLs as intermediaries between GWAS variants and disease.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-splicing" class="slide level2">
+<h2>What is Splicing?</h2>
+<p><img data-src="L9-Post-GWAS-MR-2026/_page_5_Figure_1.jpeg" style="height:75.0%"></p>
+<div class="source-credit">
+<p><a href="https://commons.wikimedia.org/w/index.php?title=File:Splicesome.pdf">CC BY-SA 4.0</a></p>
+</div>
+<aside class="notes">
+<p>Pre-mRNA is processed into mature mRNA by splicing out introns. Different exon combinations (alternative splicing) produce different protein isoforms. sQTLs are genetic variants that alter splicing ratios.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="total-mrna-and-splicing-affect-complex-traits" class="slide level2">
+<h2>Total mRNA and Splicing Affect Complex Traits</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_6_Picture_1.jpeg" class="r-stretch"><div class="source-credit">
+<p>Li et al.&nbsp;<em>Science</em> 2016</p>
+</div>
+<aside class="notes">
+<p>Both the total level of mRNA (captured by eQTLs) and alternative splicing (captured by sQTLs) have been shown to be primary links between genetic variation and disease. Li et al.&nbsp;2016 showed RNA splicing may be even more important than total expression.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="expression-quantitative-trait-loci-eqtls" class="slide level2">
+<h2>Expression Quantitative Trait Loci (eQTLs)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="L9-Post-GWAS-MR-2026/_page_7_Figure_1.jpeg"></p>
+<div class="source-credit">
+<p>GTEx Consortium. <em>Science</em> 2020; <a href="https://gtexportal.org/home/locusBrowserPage/ACTN3">GTEx portal — ACTN3 locus</a></p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="takehome">
+<p>The dose-response relationship between genotype and expression level provides strong evidence that the eQTL is causal for expression changes</p>
+</div>
+</div></div>
+<aside class="notes">
+<p>The GTEx portal shows eQTL results across 49 tissues. A clear three-group violin plot (0, 1, 2 copies of effect allele) showing graded expression changes is compelling evidence of a true eQTL. This dose-response is what we expect from a causal genetic effect.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="how-do-we-find-causal-genes" class="title-slide slide level1 center">
+<h1>How Do We Find Causal Genes?</h1>
+
+</section>
+<section id="naive-approach-find-the-egene-of-the-top-snp" class="slide level2">
+<h2>Naive Approach: Find the eGene of the Top SNP</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_10_Figure_1.jpeg" class="r-stretch"><div class="takehome">
+<p>Take top GWAS SNP (e.g., rs1558902 for BMI) → look it up in GTEx → find its eGene</p>
+</div>
+<div class="source-credit">
+<p><a href="https://gtexportal.org/home/snp/rs1558902">GTEx portal — rs1558902</a></p>
+</div>
+<aside class="notes">
+<p>The naive approach is simple and often used informally. It assumes the top GWAS SNP is also the top eQTL SNP and that the nearby eGene is therefore the causal gene. Both assumptions can fail.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="gtex-shows-eqtl-and-sqtl-evidence" class="slide level2">
+<h2>GTEx Shows eQTL and sQTL Evidence</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><img data-src="L9-Post-GWAS-MR-2026/_page_11_Figure_0.jpeg"></p>
+</div><div class="column" style="width:45%;">
+<p>eQTL violin plot and sQTL results for chr16_53769662 — the FTO locus actually points to <em>IRX3</em>, not <em>FTO</em></p>
+</div></div>
+<aside class="notes">
+<p>The famous FTO locus example: rs1558902 is a top BMI GWAS hit near the FTO gene. But careful eQTL analysis pointed to IRX3 as the regulated gene. This is a textbook example of naive approach failure.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="naive-approach-can-lead-to-false-links" class="slide level2">
+<h2>Naive Approach Can Lead to False Links</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><img data-src="L9-Post-GWAS-MR-2026/_page_13_Figure_1.jpeg"></p>
+</div><div class="column" style="width:45%;">
+<p>Yellow and brown bars show where posterior inclusion probability is concentrated — often <em>not</em> at the GWAS lead SNP</p>
+<div class="takehome">
+<p>The top GWAS SNP ≠ the causal eQTL variant. LD contamination makes naive gene assignment unreliable.</p>
+</div>
+</div></div>
+<aside class="notes">
+<p>Fine-mapping with SusieR or other Bayesian methods reveals the credible set of causal variants. When the fine-mapped eQTL credible set and the GWAS credible set don’t overlap, the gene assignment from the naive approach is wrong.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="twas-the-association-approach" class="title-slide slide level1 center">
+<h1>TWAS: The Association Approach</h1>
+
+</section>
+<section id="gwas-discovers-loci-but-mechanism-is-unclear" class="slide level2">
+<h2>GWAS Discovers Loci but Mechanism Is Unclear</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_16_Figure_1.jpeg" class="r-stretch"><aside class="notes">
+<p>A Manhattan plot of a complex trait shows many significant loci — but for each one, we face the same problem: which gene, in which tissue, through what mechanism? TWAS is a systematic approach to answer this at scale.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="could-twas-identify-genes" class="slide level2">
+<h2>Could TWAS Identify Genes?</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_17_Figure_1.jpeg" class="r-stretch"><aside class="notes">
+<p>The conceptual diagram of TWAS: instead of testing SNP-trait associations, test predicted expression-trait associations. Each gene becomes a unit of analysis.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-not-just-measure-expression-directly" class="slide level2">
+<h2>Why Not Just Measure Expression Directly?</h2>
+<p>Three problems with direct expression measurement:</p>
+<ul>
+<li>RNA-seq is expensive — not available in large GWAS cohorts</li>
+<li>Many relevant tissues (brain, pancreas, etc.) are not accessible in living donors</li>
+<li><strong>Reverse causality:</strong> differentially expressed genes may be <em>consequences</em> of disease, not causes</li>
+</ul>
+<div class="takehome">
+<p>Using genetic predictors of expression removes reverse causation and enables analysis in tissues that cannot be biopsied</p>
+</div>
+<aside class="notes">
+<p>The solution is elegant: train models that predict expression from genotype using reference datasets (GTEx), then apply those models to GWAS participants. Because genotype precedes both expression and disease, reverse causation is eliminated.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="use-genetic-predictors-of-gene-expression" class="slide level2">
+<h2>Use Genetic Predictors of Gene Expression</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_19_Figure_1.jpeg" class="r-stretch"><aside class="notes">
+<p>The key insight: genotype causes expression, so we can predict expression from genotype. The prediction model is trained in a reference dataset where both genotype and transcriptome data are available (e.g., GTEx).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="we-can-train-gene-expression-predictors-using-reference-data" class="slide level2">
+<h2>We Can Train Gene Expression Predictors Using Reference Data</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_20_Figure_2.jpeg" class="r-stretch"><div class="takehome">
+<p>Reference genotype + transcriptome → elastic net models → sparse predictors with good cross-validated performance</p>
+</div>
+<aside class="notes">
+<p>Elastic net regularization selects a small number of SNPs per gene (sparse predictors). Sparsity is important — denser models like BSLMM include more LD-contaminating SNPs. Enforcing sparsity improves both prediction accuracy and reduces false associations from LD.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="we-can-train-gene-expression-predictors-using-deep-learning-methods" class="slide level2">
+<h2>We Can Train Gene Expression Predictors Using Deep Learning Methods</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_21_Figure_1.jpeg" class="r-stretch"><div class="source-credit">
+<p>Avsec et al.&nbsp;<em>Nature Methods</em> 2021 (sequence-based prediction)</p>
+</div>
+<aside class="notes">
+<p>Sequence-based models like Enformer (Avsec et al.&nbsp;2021) predict gene expression directly from DNA sequence, complementing GTEx-trained elastic net models.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="predixcan-twas-with-genetically-predicted-expression" class="slide level2">
+<h2>PrediXcan: TWAS with Genetically Predicted Expression</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_22_Figure_1.jpeg" class="r-stretch"><aside class="notes">
+<p>PrediXcan (Gamazon et al.&nbsp;2015) applies the trained expression prediction models to an independent cohort, then correlates predicted expression with the trait of interest. S-PrediXcan (Barbeira et al.&nbsp;2018) extends this to GWAS summary statistics, enabling analysis without individual-level data.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="examples-of-well-predicted-genes" class="slide level2">
+<h2>Examples of Well-Predicted Genes</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_23_Figure_1.jpeg" class="r-stretch"><aside class="notes">
+<p>Not all genes are equally predictable. Genes with high cis-heritability (variance in expression explained by local genetic variants) are well predicted. Genes with low cis-heritability cannot be reliably predicted and are excluded.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="prediction-performance-tracks-heritability" class="slide level2">
+<h2>Prediction Performance Tracks Heritability</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_24_Figure_1.jpeg" class="r-stretch"><div class="takehome">
+<p>Prediction accuracy (R²) scales with cis-heritability of gene expression — genes with more heritable expression have more reliable predictors</p>
+</div>
+<aside class="notes">
+<p>This is an important validation: the prediction models are capturing genuine genetic signal, not noise. The correlation between cross-validated R² and heritability is a sanity check that the method is working as intended.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="advantages-of-gene-level-associations" class="slide level2">
+<h2>Advantages of Gene-Level Associations</h2>
+<ul>
+<li><strong>Reduced multiple testing:</strong> ~10⁶ SNPs → ~10⁴ genes</li>
+<li><strong>Better functional annotation:</strong> gene function is far better characterized than individual SNP effects</li>
+<li><strong>Cross-species validation:</strong> gene knockdowns in model organisms can confirm predictions</li>
+<li><strong>Direction of effects:</strong> predicts whether increasing/decreasing gene expression is harmful or protective</li>
+<li><strong>Drug target prioritization:</strong> genes are actionable; SNPs usually are not</li>
+</ul>
+<aside class="notes">
+<p>These advantages make TWAS a practical complement to GWAS. The reduction in multiple testing is particularly valuable — with ~10,000 genes to test instead of millions of SNPs, the significance threshold is much more achievable, and there are fewer spurious hits to follow up.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="limitations-of-association-methods" class="slide level2">
+<h2>Limitations of Association Methods</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/ld-contamination-co-regulation.png" class="r-stretch"><aside class="notes">
+<p>The three main limitations of TWAS. LD contamination is the most tractable — addressed by sparse predictors and colocalization. Molecular pleiotropy is harder: a variant that regulates 10 genes will produce 10 TWAS associations, but only one gene may be causal for the trait. Colocalization can help here too.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="colocalization" class="slide level2">
+<h2>Colocalization</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_28_Figure_1.jpeg" class="r-stretch"><aside class="notes">
+<p>Section divider introducing colocalization as a solution to LD contamination and a method to confirm TWAS findings.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="colocalization-do-gwas-and-eqtl-share-a-causal-variant" class="slide level2">
+<h2>Colocalization: Do GWAS and eQTL Share a Causal Variant?</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="L9-Post-GWAS-MR-2026/_page_29_Figure_1.jpeg"></p>
+</div><div class="column" style="width:40%;">
+<p>Two signals can be correlated because they share a causal variant (<strong>colocalize</strong>) or because distinct causal variants are in LD (<strong>no colocalization</strong>)</p>
+<div class="takehome">
+<p>Colocalization asks: are the GWAS and eQTL signals driven by the same variant, or by two different variants that are correlated?</p>
+</div>
+</div></div>
+<aside class="notes">
+<p>The coloc tool (Giambartolomei et al.&nbsp;2014) computes posterior probabilities for five hypotheses: no association in either trait, association only in trait 1, only in trait 2, both traits with different causal variants, or both traits with the same causal variant. H4 (shared causal variant) is what we want for confident gene assignment.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="limitations-of-colocalization" class="slide level2">
+<h2>Limitations of Colocalization</h2>
+</section>
+<section id="fine-mapping-is-sensitive-to-ld-reference" class="slide level2">
+<h2>Fine-Mapping Is Sensitive to LD Reference</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_31_Figure_1.jpeg" class="r-stretch"><div class="source-credit">
+<p>W. Chen et al.&nbsp;<em>Genetics</em> 2015 — Approximate Bayesian fine-mapping</p>
+</div>
+<aside class="notes">
+<p>Fine-mapping underlies colocalization: both methods require accurate LD to assign posterior probabilities to variants. When the LD reference panel (e.g., 1000 Genomes) doesn’t match the GWAS cohort (e.g., UK Biobank), fine-mapping results can be unreliable.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="even-the-same-trait-may-not-colocalize" class="slide level2">
+<h2>Even the same trait may not “colocalize”</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/giant-uk-height-ld-sensitivity.png" class="r-stretch"><aside class="notes">
+<p>This is a sobering result. The same trait (height) measured in two large cohorts should have highly overlapping causal variants. When they don’t colocalize, it’s an artifact of using an external LD panel. The take-home: colocalization results should not be taken at face value when in-sample LD is not used.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="colocalization-can-be-too-conservative" class="slide level2">
+<h2>Colocalization Can Be Too Conservative</h2>
+<ul>
+<li>Colocalization can help identify causal genes but is very conservative in practice</li>
+<li>Real colocalized signals are frequently dismissed due to:
+<ul>
+<li>LD reference mismatch</li>
+<li>Low prior probability assigned to shared causal variant</li>
+<li>Insufficient sample size for the eQTL study</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>The field’s current recommendation is to treat colocalization as a filter for high-confidence signals rather than as a definitive test. Discarding all non-colocalized TWAS signals would miss many true causal genes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="recommendation-for-post-gwas-analysis" class="slide level2">
+<h2>Recommendation for Post-GWAS Analysis</h2>
+<ol type="1">
+<li><strong>Start with TWAS/association</strong> to generate a list of candidate causal genes
+<ul>
+<li>Use sparse predictors (elastic net &gt; BSLMM)</li>
+<li>Fine-mapped expression predictors are even better</li>
+</ul></li>
+<li><strong>Apply colocalization</strong> to filter out LD-contaminated associations</li>
+<li><strong>Be aware</strong> that colocalization is conservative — real signals may be discarded</li>
+<li><strong>Ask</strong> for better LD reference resources
+<ul>
+<li>Studies should share LD matrices alongside GWAS summary statistics</li>
+</ul></li>
+</ol>
+<div class="takehome">
+<p>TWAS generates candidates; colocalization filters them — but neither method is infallible</p>
+</div>
+<aside class="notes">
+<p>This slide encapsulates the practical workflow for post-GWAS gene discovery. It’s a two-step funnel: cast a wide net with TWAS, then apply a conservative filter with colocalization. The key caveat is that the filter may be too aggressive, and the field needs better LD resources to improve it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="summary-dissecting-mechanisms-of-gwas-variants" class="slide level2">
+<h2>Summary: Dissecting Mechanisms of GWAS Variants</h2>
+<ul>
+<li>Most trait-associated variants are non-coding → interpretation requires a mechanistic investigation</li>
+<li>They likely act through regulation of gene expression (eQTLs, sQTLs)</li>
+<li>TWAS with genetically predicted expression identifies putatively causal genes at scale</li>
+<li>Colocalization mitigates LD contamination but can be overly conservative</li>
+<li>Better LD reference panels are urgently needed for the field</li>
+</ul>
+<aside class="notes">
+<p>Brief summary of Part 1 before transitioning to Mendelian Randomization.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="mendelian-randomization" class="title-slide slide level1 center">
+<h1>Mendelian Randomization</h1>
+
+</section>
+<section id="less-technical-introduction" class="slide level2">
+<h2>Less Technical Introduction</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/nature-mr-news-features.png" class="r-stretch"><aside class="notes">
+<p>These Nature news articles provide accessible introductions to MR for students who want a non-technical starting point before diving into the statistical framework.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mendelian-randomization-1" class="slide level2">
+<h2>Mendelian Randomization</h2>
+<p><strong>A statistical method to assess causal relationships between a modifiable exposure and a disease outcome</strong></p>
+<ul>
+<li>Can we determine causality with statistical methods?</li>
+<li>MR leverages the fact that genotypes are not generally susceptible to reverse causation or confounding</li>
+<li>Genotypes are assigned at conception — before the exposure or disease develops</li>
+</ul>
+<aside class="notes">
+<p>MR was first proposed by Gray and Wheatley in 1991 and formalized by Davey Smith and Ebrahim in 2003. The core idea: alleles are randomly distributed at meiosis (like randomization in a clinical trial), so they are unlikely to be confounded by lifestyle, socioeconomic status, or other factors.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="correlation-is-not-causation" class="slide level2">
+<h2>Correlation Is Not Causation</h2>
+<p>Observational associations between an exposure and disease can arise from:</p>
+<ol type="1">
+<li><strong>Causation</strong> — exposure genuinely causes disease ✓</li>
+<li><strong>Reverse causation</strong> — disease causes the exposure ✗</li>
+<li><strong>Confounding</strong> — a third variable causes both ✗</li>
+</ol>
+<div class="takehome">
+<p>To establish that an exposure <em>causes</em> a disease, we need methods that are robust to confounding and reverse causation</p>
+</div>
+<aside class="notes">
+<p>Classic examples: people who carry umbrellas have higher rates of wet shoes — not because umbrellas cause wet shoes, but because rain confounds both. In medicine: observational studies showed that people with high HDL had fewer heart attacks — but does high HDL <em>cause</em> fewer heart attacks?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="randomized-trial-and-mendelian-randomization" class="slide level2">
+<h2>Randomized Trial and Mendelian Randomization</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_39_Figure_1.jpeg" class="r-stretch"><p>In MR, nature performs the randomization: alleles are assigned at conception, creating “genetic strata” that differ in exposure level but not (ideally) in confounders</p>
+<div class="source-credit">
+<p>Burgess et al.&nbsp;<em>BMJ</em> 2012 — Mendelian randomisation to assess benefit of clinical intervention</p>
+</div>
+<aside class="notes">
+<p>The analogy to RCTs is powerful: in an RCT, randomization of treatment breaks the link between treatment and confounders. In MR, random inheritance of alleles at meiosis breaks the link between the genetic instrument and confounders. The key difference: MR provides a lifetime “dose” of altered exposure, whereas an RCT tests a specific intervention over a defined period.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="evidence-hierarchy-for-causal-links" class="slide level2">
+<h2>Evidence Hierarchy for Causal Links</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_40_Picture_1.jpeg" class="r-stretch"><p>RCT = Randomized Clinical Trial — the gold standard for causal inference in medicine</p>
+<div class="source-credit">
+<p>Davies, Holmes &amp; Davey Smith. <em>BMJ</em> 2018 — Guide to reading MR studies</p>
+</div>
+<aside class="notes">
+<p>MR sits below RCTs in the evidence hierarchy but above observational studies. It is particularly valuable when RCTs are unethical (e.g., testing whether smoking causes cancer) or impractical (e.g., testing a lifetime exposure like childhood nutrition).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-mr-question" class="slide level2">
+<h2>The MR Question</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_41_Picture_1.jpeg" class="r-stretch"><p><strong>Goal:</strong> Test association between a modifiable exposure and disease</p>
+<p>Examples of exposures: smoking, HDL cholesterol, BMI, blood pressure, years of education</p>
+<aside class="notes">
+<p>MR is most valuable when the exposure is modifiable — that is, when a positive result has therapeutic implications. Testing whether genetically elevated HDL reduces MI risk is actionable because drugs can raise HDL. Testing whether being taller causes disease is less actionable.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-we-need-mr-confounders-mislead" class="slide level2">
+<h2>Why We Need MR: Confounders Mislead</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_42_Picture_1.jpeg" class="r-stretch"><p>Confounders create spurious associations between exposure and outcome in observational data</p>
+<aside class="notes">
+<p>Socioeconomic status, diet, physical activity, and many other factors confound observational associations between, say, HDL cholesterol and heart attack risk. Genetic instruments for HDL are inherited at conception and are not influenced by these lifestyle factors.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mr-uses-an-instrumental-variable" class="slide level2">
+<h2>MR Uses an Instrumental Variable</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_43_Picture_1.jpeg" class="r-stretch"><p>The genetic variant (IV) must be associated with exposure but have no direct path to outcome except through the exposure</p>
+<aside class="notes">
+<p>Instrumental variables (IV) analysis is a classic econometric technique. MR applies it in genetics: find a variant (or set of variants) that (1) strongly predicts the exposure, (2) is not associated with confounders, (3) has no direct effect on the outcome. The ratio of the genetic effect on outcome to the genetic effect on exposure estimates the causal effect of exposure on outcome.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="three-assumptions-of-mr" class="slide level2">
+<h2>Three Assumptions of MR</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="L9-Post-GWAS-MR-2026/_page_44_Picture_1.jpeg"></p>
+</div><div class="column" style="width:40%;">
+<ol type="1">
+<li><strong>Relevance:</strong> IV is associated with the exposure</li>
+<li><strong>Independence:</strong> IV is not associated with confounders</li>
+<li><strong>Exclusion restriction:</strong> IV affects outcome <em>only</em> through the exposure — no direct effect</li>
+</ol>
+<p>Assumption 3 (exclusion restriction) is the most difficult to verify and is violated by horizontal pleiotropy</p>
+</div></div>
+<aside class="notes">
+<p>Assumption 1 is testable — just check the F-statistic in the first-stage regression (strong instruments: F &gt; 10). Assumption 2 is testable for measured confounders (check if IV predicts BMI, smoking, SES, etc.). Assumption 3 is the hard one — it requires biological knowledge and sensitivity analyses.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="examples-of-mr-and-assumptions" class="slide level2">
+<h2>Examples of MR and Assumptions</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_45_Figure_1.jpeg" class="r-stretch"><aside class="notes">
+<p>Concrete examples help students see when MR works (variant near gene affects exposure and nothing else) vs.&nbsp;when it fails (pleiotropic variant affects multiple traits independently).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="horizontal-vs.-vertical-pleiotropy" class="slide level2">
+<h2>Horizontal vs.&nbsp;Vertical Pleiotropy</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="L9-Post-GWAS-MR-2026/_page_46_Figure_1.jpeg"></p>
+</div><div class="column" style="width:40%;">
+<ul>
+<li><strong>Vertical (mediated) pleiotropy:</strong> IV → Exposure → Outcome — acceptable, this is the MR pathway</li>
+<li><strong>Horizontal pleiotropy:</strong> IV → Outcome via independent pathway — violates exclusion restriction</li>
+</ul>
+<p>Horizontal pleiotropy is the main threat to MR validity; multiple robust MR methods (MR-Egger, weighted median) can detect and partially correct for it</p>
+</div></div>
+<aside class="notes">
+<p>Many genetic variants are pleiotropic in the horizontal sense — a variant near a gene expressed in many tissues will affect multiple traits. Fortunately, when using many instruments, the direction and magnitude of pleiotropic effects can be estimated and corrected for using MR-Egger regression (the intercept tests for directional pleiotropy).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="case-study-hdl-cholesterol-failed-mr-test" class="slide level2">
+<h2>Case Study: HDL Cholesterol Failed MR Test</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><img data-src="L9-Post-GWAS-MR-2026/hdl-lancet-paper.png"></p>
+<div class="source-credit">
+<p>Voight et al.&nbsp;(2012). <em>The Lancet</em> — Plasma HDL and myocardial infarction: a MR study</p>
+</div>
+</div><div class="column" style="width:45%;">
+<p>Observational studies: high HDL → fewer heart attacks</p>
+<p>MR result: no causal effect of genetically elevated HDL on MI risk</p>
+<p>The HDL-MI MR result correctly predicted that HDL-raising drugs would fail in clinical trials — a powerful validation of the method</p>
+</div></div>
+<aside class="notes">
+<p>This is the landmark case for MR. Decades of observational evidence supported raising HDL as a therapeutic strategy. Multiple pharma companies developed HDL-raising drugs (niacin, CETP inhibitors). MR said it wouldn’t work. The drugs failed. This story is now cited as a major success of MR in drug target validation.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="single-instrument-estimating-exposure-effect" class="slide level2">
+<h2>Single Instrument: Estimating Exposure Effect</h2>
+<div style="font-size: 0.8em">
+<p><strong>Step 1:</strong> Estimate genetic effect on exposure</p>
+<p><span class="math display">\[\text{Exposure} = \gamma X + \varepsilon\]</span></p>
+<p><strong>Step 2:</strong> Estimate genetic effect on outcome</p>
+<p><span class="math display">\[Y = \delta X + \varepsilon_d = \beta \gamma X + \varepsilon_2 \implies \delta = \beta \cdot \gamma\]</span></p>
+<p><strong>Step 3:</strong> Ratio estimate of causal effect</p>
+<p><span class="math display">\[\hat{\beta} = \frac{\hat{\delta}}{\hat{\gamma}}\]</span></p>
+<p><strong>Step 4:</strong> Test statistic</p>
+<p><span class="math display">\[Z = \frac{\hat{\beta}}{\text{se}(\hat{\beta})}, \quad Z^2 \sim \chi^2_1, \quad p = 2 \cdot \Phi(-|Z|)\]</span></p>
+</div>
+<aside class="notes">
+<p>The Wald ratio estimator is the simplest MR approach. With a single strong instrument, the causal effect estimate is the ratio of the IV-outcome effect to the IV-exposure effect. The standard error accounts for uncertainty in both estimates (Delta method). With summary statistics, γ̂ comes from a GWAS of the exposure and δ̂ from a GWAS of the outcome.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mr-with-multiple-instruments" class="slide level2">
+<h2>MR with Multiple Instruments</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_49_Figure_1.jpeg" class="r-stretch"><aside class="notes">
+<p>Using multiple SNPs as instruments increases statistical power and enables tests of pleiotropy. The slope in an MR-Egger regression estimates the causal effect; the intercept tests whether there is directional pleiotropy (a non-zero intercept indicates that the IV-outcome effects are systematically shifted relative to what would be expected from the causal pathway alone).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mr-with-multiple-instruments-egger-regression" class="slide level2">
+<h2>MR with Multiple Instruments: Egger Regression</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><img data-src="L9-Post-GWAS-MR-2026/_page_50_Figure_1.jpeg"></p>
+</div><div class="column" style="width:45%;">
+<div style="font-size: 0.75em;">
+<p>With multiple instruments, we can use:</p>
+<ul>
+<li><strong>IVW (Inverse Variance Weighted):</strong> assumes no average horizontal pleiotropy</li>
+<li><strong>Weighted Median:</strong> consistent if ≥50% of instruments are valid</li>
+<li><strong>MR-Egger:</strong> allows for directional pleiotropy; intercept tests exclusion restriction</li>
+</ul>
+</div>
+</div></div>
+<aside class="notes">
+<p>In a funnel plot of MR estimates, if there’s no pleiotropy, estimates from different instruments should be centered around the true causal effect. MR-Egger plots IV-outcome vs.&nbsp;IV-exposure effects; the slope = causal estimate, intercept = pleiotropy test.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mr-with-multiple-instruments-robustness" class="slide level2">
+<h2>MR with Multiple Instruments: Robustness</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_51_Figure_1.jpeg" class="r-stretch"><p>Recall with 1 instrument: <span class="math inline">\(Y = \delta X + \varepsilon_d = \beta \gamma X + \varepsilon_2\)</span></p>
+<aside class="notes">
+<p>When IVW, weighted median, and MR-Egger all give similar effect estimates, the result is robust to violations of individual assumptions. When they disagree, there is likely substantial pleiotropy and results should be interpreted cautiously.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mr-with-multiple-instruments-robustness-1" class="slide level2">
+<h2>MR with Multiple Instruments: Robustness</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_52_Figure_1.jpeg" class="r-stretch"><p>Multiple methods agreeing on the same causal estimate strengthens confidence</p>
+<aside class="notes">
+<p>When IVW, weighted median, and MR-Egger all give similar effect estimates, the result is robust to violations of individual assumptions. When they disagree, there is likely substantial pleiotropy and results should be interpreted cautiously.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mr-base-web-application-for-mr" class="slide level2">
+<h2>MR-BASE: Web Application for MR</h2>
+
+<img data-src="L9-Post-GWAS-MR-2026/_page_53_Figure_1.jpeg" class="r-stretch"><p>MR-BASE (now IEU Open GWAS) provides: - Access to thousands of curated GWAS summary statistics - Automated instrument selection - Multiple MR methods implemented in R (<code>TwoSampleMR</code> package)</p>
+<aside class="notes">
+<p>MR-BASE dramatically lowered the barrier to performing MR analyses. Students can explore causal relationships between hundreds of exposures and outcomes through the web interface or R package, without needing to obtain individual-level data.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="summary-of-mendelian-randomization" class="slide level2">
+<h2>Summary of Mendelian Randomization</h2>
+<ul>
+<li>MR provides evidence of <strong>putative causal relations</strong> between modifiable risk factors and disease, using genetic variants as natural experiments</li>
+<li>MR is less susceptible to <strong>confounding and reverse causation</strong> than conventional observational studies</li>
+<li>Like all methods, MR depends on <strong>assumptions</strong> — their plausibility must be assessed for each application</li>
+<li>Results should be interpreted alongside <strong>other sources of evidence</strong> (RCT, biological plausibility, animal models)</li>
+</ul>
+<div class="source-credit">
+<p>Davies, Holmes &amp; Davey Smith. <em>BMJ</em> 2018</p>
+</div>
+<div class="takehome">
+<p>MR is a powerful causal inference tool in genetics, but assumptions — especially the exclusion restriction — must be carefully scrutinized</p>
+</div>
+<aside class="notes">
+<p>The classic summary from Davies et al.&nbsp;MR is best used as one piece of a triangulation strategy: converging evidence from MR, RCTs where available, and mechanistic studies provides the strongest causal inference.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="sasha-gusevs-tweetorial-on-complex-trait-genetics" class="slide level2">
+<h2>Sasha Gusev’s Tweetorial on Complex Trait Genetics</h2>
+<p>An accessible and insightful summary thread covering GWAS, fine-mapping, functional annotations, TWAS, and MR:</p>
+<p><a href="https://twitter.com/sashagusevposts/status/1647421238799736833">twitter.com/sashagusevposts — April 2023</a></p>
+<aside class="notes">
+<p>Recommended reading: Sasha Gusev’s tweetorial provides a big-picture synthesis of how all the methods covered in this course fit together. Good for consolidating understanding after the lecture.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="references" class="slide level2">
+<h2>References</h2>
+<ul>
+<li>GTEx Consortium (2020). Atlas of genetic regulatory effects across human tissues. <em>Science</em>. DOI: 10.1126/science.aaz1776</li>
+<li>Barbeira et al.&nbsp;(2021). Exploiting GTEx resources to decipher mechanisms at GWAS loci. <em>Genome Biology</em>.</li>
+<li>Albert &amp; Kruglyak (2015). Regulatory variation in complex traits. <em>Nature Reviews Genetics</em>.</li>
+<li>Li et al.&nbsp;(2016). RNA splicing is a primary link between genetic variation and disease. <em>Science</em>.</li>
+<li>Gamazon et al.&nbsp;(2015). A gene-based association method using reference transcriptome data (PrediXcan). <em>Nature Genetics</em>.</li>
+<li>Gusev et al.&nbsp;(2016). Integrative approaches for large-scale TWAS. <em>Nature Genetics</em>.</li>
+<li>Zhu et al.&nbsp;(2016). Integration of GWAS and eQTL studies predicts complex trait gene targets. <em>Nature Genetics</em>.</li>
+<li>Voight et al.&nbsp;(2012). Plasma HDL cholesterol and risk of myocardial infarction: a MR study. <em>The Lancet</em>.</li>
+<li>Bowden, Davey Smith &amp; Burgess (2015). MR with invalid instruments: MR-Egger regression. <em>IJE</em>.</li>
+<li>Davies, Holmes &amp; Davey Smith (2018). Reading Mendelian randomisation studies. <em>BMJ</em>.</li>
+</ul>
+<aside class="notes">
+<p>Full reference list for students who want to explore the primary literature. PrediXcan and MR-Egger are the two core methods papers; GTEx is the primary data resource.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="L9-Post-GWAS-MR-2026_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="L9-Post-GWAS-MR-2026_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="L9-Post-GWAS-MR-2026_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="L9-Post-GWAS-MR-2026_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="L9-Post-GWAS-MR-2026_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="L9-Post-GWAS-MR-2026_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="L9-Post-GWAS-MR-2026_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="L9-Post-GWAS-MR-2026_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="L9-Post-GWAS-MR-2026_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="L9-Post-GWAS-MR-2026_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

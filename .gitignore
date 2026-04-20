@@ -7,3 +7,7 @@ CLAUDE.html
 
 # Local preview copies of custom.css inside lecture folders
 L*/custom.css
+
+# Session handoff notes
+CONTINUE.md
+**/CONTINUE.md

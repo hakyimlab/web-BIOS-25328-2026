@@ -49,9 +49,21 @@
 
 .reveal .takehome {
   position: absolute;
-  bottom: 10%;
+  bottom: 5%;
   left: 5%;
   right: 5%;
+  background-color: #e0f2fe;
+  color: #0369a1;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.reveal .takehome-right {
+  position: absolute;
+  top: 30%;
+  left: 58%;
+  right: 3%;
   background-color: #e0f2fe;
   color: #0369a1;
   padding: 20px;
